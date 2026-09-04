@@ -13,22 +13,22 @@
 
     <style>
         :root {
-            --bg-canvas: #090b10;
-            --bg-surface: #10141e;
-            --bg-surface-alt: #161c2b;
-            --border-subtle: rgba(255, 255, 255, 0.08);
-            --border-focus: rgba(99, 102, 241, 0.5);
-            --text-primary: #f8fafc;
-            --text-secondary: #94a3b8;
+            --bg-canvas: #f8fafc;
+            --bg-surface: #ffffff;
+            --bg-surface-alt: #f1f5f9;
+            --border-subtle: #e2e8f0;
+            --border-focus: #6366f1;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
             --text-muted: #64748b;
             
-            --accent-primary: #6366f1;
-            --accent-glow: rgba(99, 102, 241, 0.25);
-            --accent-teal: #06b6d4;
-            --accent-emerald: #10b981;
-            --accent-amber: #f59e0b;
-            --accent-rose: #f43f5e;
-            --accent-purple: #a855f7;
+            --accent-primary: #4f46e5;
+            --accent-glow: rgba(79, 70, 229, 0.2);
+            --accent-teal: #0891b2;
+            --accent-emerald: #059669;
+            --accent-amber: #d97706;
+            --accent-rose: #e11d48;
+            --accent-purple: #9333ea;
 
             --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
@@ -52,8 +52,8 @@
             min-height: 100vh;
             overflow-x: hidden;
             background-image: 
-                radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 85% 65%, rgba(236, 72, 153, 0.06) 0%, transparent 40%);
+                radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.07) 0%, transparent 45%),
+                radial-gradient(circle at 85% 65%, rgba(14, 165, 233, 0.05) 0%, transparent 45%);
         }
 
         a {
@@ -72,7 +72,7 @@
             position: sticky;
             top: 0;
             z-index: 50;
-            background: rgba(9, 11, 16, 0.85);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(18px);
             border-bottom: 1px solid var(--border-subtle);
         }
@@ -91,6 +91,7 @@
             font-weight: 800;
             font-size: 20px;
             letter-spacing: -0.5px;
+            color: var(--text-primary);
         }
 
         .brand-icon {
@@ -101,7 +102,7 @@
             display: grid;
             place-items: center;
             color: #fff;
-            box-shadow: 0 0 20px var(--accent-glow);
+            box-shadow: 0 4px 12px var(--accent-glow);
         }
 
         .brand span span {
@@ -144,11 +145,11 @@
             gap: 8px;
             padding: 6px 16px;
             border-radius: var(--radius-pill);
-            background: rgba(99, 102, 241, 0.12);
-            border: 1px solid rgba(99, 102, 241, 0.3);
+            background: rgba(79, 70, 229, 0.08);
+            border: 1px solid rgba(79, 70, 229, 0.25);
             font-size: 12px;
             font-weight: 600;
-            color: #a5b4fc;
+            color: var(--accent-primary);
             margin-bottom: 20px;
         }
 
@@ -158,10 +159,11 @@
             letter-spacing: -1.2px;
             line-height: 1.15;
             margin-bottom: 16px;
+            color: var(--text-primary);
         }
 
         .hero h1 span {
-            background: linear-gradient(135deg, #fff 30%, #a5b4fc 70%, var(--accent-teal) 100%);
+            background: linear-gradient(135deg, var(--accent-primary) 20%, #7c3aed 60%, var(--accent-teal) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -180,7 +182,7 @@
             border-radius: var(--radius-lg);
             padding: 20px;
             margin-bottom: 36px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
         }
 
         .search-row {
@@ -207,7 +209,7 @@
         .search-box input {
             width: 100%;
             height: 48px;
-            background: var(--bg-canvas);
+            background: var(--bg-surface-alt);
             border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md);
             padding: 0 16px 0 46px;
@@ -219,6 +221,7 @@
         }
 
         .search-box input:focus {
+            background: #ffffff;
             border-color: var(--border-focus);
             box-shadow: 0 0 0 4px var(--accent-glow);
         }
@@ -234,7 +237,7 @@
 
         .select-box {
             height: 48px;
-            background: var(--bg-canvas);
+            background: var(--bg-surface-alt);
             border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md);
             padding: 0 14px;
@@ -247,6 +250,7 @@
         }
 
         .select-box:focus {
+            background: #ffffff;
             border-color: var(--border-focus);
         }
 
@@ -264,12 +268,12 @@
 
         .pill-btn {
             border: 1px solid var(--border-subtle);
-            background: var(--bg-canvas);
+            background: var(--bg-surface-alt);
             color: var(--text-secondary);
             padding: 8px 18px;
             border-radius: var(--radius-pill);
             font-size: 13px;
-            font-weight: 500;
+            font-weight: 600;
             white-space: nowrap;
             cursor: pointer;
             display: flex;
@@ -280,14 +284,14 @@
 
         .pill-btn:hover {
             color: var(--text-primary);
-            border-color: rgba(255, 255, 255, 0.2);
-            background: var(--bg-surface-alt);
+            border-color: #cbd5e1;
+            background: #e2e8f0;
         }
 
         .pill-btn.active {
             background: var(--accent-primary);
             border-color: var(--accent-primary);
-            color: #fff;
+            color: #ffffff;
             box-shadow: 0 4px 14px var(--accent-glow);
         }
 
@@ -318,13 +322,13 @@
             justify-content: space-between;
             position: relative;
             transition: var(--transition);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
         }
 
         .tool-card:hover {
             transform: translateY(-4px);
-            border-color: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.6), 0 0 25px rgba(99, 102, 241, 0.15);
+            border-color: #cbd5e1;
+            box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.08), 0 0 20px rgba(79, 70, 229, 0.08);
         }
 
         .card-top {
@@ -347,10 +351,10 @@
             border-radius: 12px;
             display: grid;
             place-items: center;
-            font-size: 22px;
-            background: var(--bg-surface-alt);
-            border: 1px solid var(--border-subtle);
-            color: #fff;
+            font-size: 20px;
+            background: rgba(79, 70, 229, 0.08);
+            border: 1px solid rgba(79, 70, 229, 0.15);
+            color: var(--accent-primary);
             flex-shrink: 0;
         }
 
@@ -371,13 +375,13 @@
 
         .version-badge {
             font-family: var(--font-mono);
-            font-size: 12px;
+            font-size: 11.5px;
             font-weight: 700;
             padding: 4px 10px;
             border-radius: var(--radius-pill);
-            background: rgba(99, 102, 241, 0.15);
-            border: 1px solid rgba(99, 102, 241, 0.35);
-            color: #a5b4fc;
+            background: rgba(79, 70, 229, 0.08);
+            border: 1px solid rgba(79, 70, 229, 0.2);
+            color: var(--accent-primary);
             white-space: nowrap;
         }
 
@@ -403,10 +407,11 @@
             font-size: 11.5px;
             background: var(--bg-surface-alt);
             border: 1px solid var(--border-subtle);
-            color: var(--text-muted);
+            color: var(--text-secondary);
             padding: 3px 9px;
             border-radius: 6px;
             font-family: var(--font-mono);
+            font-weight: 500;
         }
 
         .card-footer {
@@ -431,14 +436,14 @@
             border-radius: 50%;
         }
 
-        .dot-open { background: var(--accent-emerald); box-shadow: 0 0 8px var(--accent-emerald); }
-        .dot-proprietary { background: var(--accent-primary); box-shadow: 0 0 8px var(--accent-primary); }
-        .dot-freemium { background: var(--accent-amber); box-shadow: 0 0 8px var(--accent-amber); }
+        .dot-open { background: var(--accent-emerald); box-shadow: 0 0 6px var(--accent-emerald); }
+        .dot-proprietary { background: var(--accent-primary); box-shadow: 0 0 6px var(--accent-primary); }
+        .dot-freemium { background: var(--accent-amber); box-shadow: 0 0 6px var(--accent-amber); }
 
         .btn-inspect {
             padding: 8px 16px;
             border-radius: var(--radius-md);
-            background: rgba(255, 255, 255, 0.05);
+            background: var(--bg-surface-alt);
             border: 1px solid var(--border-subtle);
             color: var(--text-primary);
             font-size: 13px;
@@ -453,6 +458,7 @@
         .btn-inspect:hover {
             background: var(--accent-primary);
             border-color: var(--accent-primary);
+            color: #ffffff;
             box-shadow: 0 4px 14px var(--accent-glow);
         }
 
@@ -460,7 +466,7 @@
         .modal-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.75);
+            background: rgba(15, 23, 42, 0.45);
             backdrop-filter: blur(8px);
             z-index: 100;
             display: none;
@@ -474,13 +480,13 @@
 
         .modal-card {
             background: var(--bg-surface);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            border: 1px solid var(--border-subtle);
             border-radius: var(--radius-lg);
             width: 100%;
             max-width: 680px;
             max-height: 90vh;
             overflow-y: auto;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+            box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25);
             position: relative;
             animation: modalFadeIn 0.25s ease-out;
         }
@@ -501,7 +507,7 @@
         .modal-close {
             background: var(--bg-surface-alt);
             border: 1px solid var(--border-subtle);
-            color: var(--text-secondary);
+            color: var(--text-muted);
             width: 34px;
             height: 34px;
             border-radius: 50%;
@@ -514,6 +520,7 @@
         .modal-close:hover {
             color: #fff;
             background: var(--accent-rose);
+            border-color: var(--accent-rose);
         }
 
         .modal-body {
@@ -528,7 +535,7 @@
         }
 
         .spec-box {
-            background: var(--bg-canvas);
+            background: var(--bg-surface-alt);
             border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md);
             padding: 14px;
@@ -541,6 +548,7 @@
             letter-spacing: 0.5px;
             margin-bottom: 4px;
             font-family: var(--font-mono);
+            font-weight: 600;
         }
 
         .spec-value {
@@ -550,7 +558,7 @@
         }
 
         .modal-section-title {
-            font-size: 14px;
+            font-size: 13.5px;
             text-transform: uppercase;
             letter-spacing: 0.8px;
             color: var(--text-muted);
@@ -576,13 +584,13 @@
 
         .feature-bullets li i {
             color: var(--accent-emerald);
-            margin-top: 3px;
+            margin-top: 4px;
         }
 
         .modal-footer {
             padding: 20px 24px;
             border-top: 1px solid var(--border-subtle);
-            background: var(--bg-canvas);
+            background: var(--bg-surface-alt);
             display: flex;
             justify-content: flex-end;
             gap: 12px;
@@ -604,7 +612,7 @@
         }
 
         .btn-link:hover {
-            opacity: 0.9;
+            opacity: 0.92;
             transform: translateY(-1px);
         }
 
@@ -760,7 +768,6 @@
 
     <!-- JavaScript Data and Application Engine -->
     <script>
-        // Database of popular AI tools, latest versions, and benchmark specifications
         const AI_REGISTRY = [
             // LLMs & REASONING
             {
@@ -1225,23 +1232,16 @@
         const modalDocLink = document.getElementById("modalDocLink");
         const modalIcon = document.getElementById("modalIcon");
 
-        // Initialize App
         function initApp() {
             totalToolsCount.textContent = AI_REGISTRY.length;
             renderTools();
             bindEvents();
         }
 
-        // Filter and Sort Engine
         function getFilteredTools() {
             return AI_REGISTRY.filter(tool => {
-                // Category Filter
                 const matchesCat = activeCategory === "all" || tool.category === activeCategory;
-
-                // License Filter
                 const matchesLicense = selectedLicense === "all" || tool.license === selectedLicense;
-
-                // Search Query Filter
                 const q = searchQuery.toLowerCase().trim();
                 const matchesSearch = !q || 
                     tool.name.toLowerCase().includes(q) ||
@@ -1257,11 +1257,10 @@
                 } else if (currentSort === "version") {
                     return b.version.localeCompare(a.version);
                 }
-                return 0; // Default featured order
+                return 0;
             });
         }
 
-        // Render Card Elements
         function renderTools() {
             const filtered = getFilteredTools();
             visibleCount.textContent = filtered.length;
@@ -1271,7 +1270,7 @@
                 toolsGrid.innerHTML = `
                     <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; background: var(--bg-surface); border: 1px dashed var(--border-subtle); border-radius: var(--radius-lg);">
                         <i class="fas fa-satellite-dish" style="font-size: 36px; color: var(--text-muted); margin-bottom: 14px;"></i>
-                        <h3 style="font-size: 18px; margin-bottom: 6px;">No AI models found</h3>
+                        <h3 style="font-size: 18px; margin-bottom: 6px; color: var(--text-primary);">No AI models found</h3>
                         <p style="color: var(--text-secondary); font-size: 14px;">Try modifying your search keywords or switching category filters.</p>
                     </div>
                 `;
@@ -1282,7 +1281,6 @@
                 const card = document.createElement("div");
                 card.className = "tool-card";
 
-                // License Dot Color
                 let dotClass = "dot-proprietary";
                 if (tool.license.includes("Open")) dotClass = "dot-open";
                 if (tool.license.includes("Freemium")) dotClass = "dot-freemium";
@@ -1321,7 +1319,6 @@
             });
         }
 
-        // Open Modal Dialog
         window.openModal = function(toolId) {
             const tool = AI_REGISTRY.find(t => t.id === toolId);
             if (!tool) return;
@@ -1344,15 +1341,12 @@
             document.body.style.overflow = "hidden";
         };
 
-        // Close Modal
         function closeModal() {
             modalOverlay.classList.remove("active");
             document.body.style.overflow = "auto";
         }
 
-        // Event Bindings
         function bindEvents() {
-            // Category Buttons
             categoryPills.addEventListener("click", (e) => {
                 const btn = e.target.closest(".pill-btn");
                 if (!btn) return;
@@ -1362,32 +1356,27 @@
                 renderTools();
             });
 
-            // Search Input
             searchInput.addEventListener("input", (e) => {
                 searchQuery = e.target.value;
                 renderTools();
             });
 
-            // License Select
             licenseFilter.addEventListener("change", (e) => {
                 selectedLicense = e.target.value;
                 renderTools();
             });
 
-            // Sorting Select
             sortBy.addEventListener("change", (e) => {
                 currentSort = e.target.value;
                 renderTools();
             });
 
-            // Modal Interactions
             modalCloseBtn.addEventListener("click", closeModal);
             modalDismissBtn.addEventListener("click", closeModal);
             modalOverlay.addEventListener("click", (e) => {
                 if (e.target === modalOverlay) closeModal();
             });
 
-            // Keyboard Escape Key for Modal
             window.addEventListener("keydown", (e) => {
                 if (e.key === "Escape" && modalOverlay.classList.contains("active")) {
                     closeModal();
@@ -1395,7 +1384,6 @@
             });
         }
 
-        // Run On Page Ready
         document.addEventListener("DOMContentLoaded", initApp);
     </script>
 </body>
