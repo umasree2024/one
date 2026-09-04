@@ -1,1464 +1,1402 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Bazaar — Raw Village Santha & Artisanal Crafts</title>
-
-    <!-- Rustic Village Fonts & Icons -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ModelDex — The Definitive Directory of Popular AI Tools & Models</title>
+    
+    <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Yatra+One&family=Rozha+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
-        /* ========== RAW EARTHEN & RUSTIC VILLAGE PALETTE ========== */
         :root {
-            --mud-dark: #3a2213;
-            --mud-medium: #593922;
-            --clay-terracotta: #b84f2d;
-            --clay-light: #d97443;
-            --turmeric: #d48b16;
-            --turmeric-light: #f7d279;
-            --raw-linen: #f4ecdc;
-            --card-parchment: #fdfaf3;
-            --soot-black: #1f140d;
-            --leaf-green: #3d5924;
-            --jute-rope: #a8885a;
-            --border-rough: 3px solid var(--mud-dark);
-            --wood-shadow: 4px 5px 0px var(--mud-dark);
-            --wood-shadow-lg: 7px 8px 0px var(--mud-dark);
-            --container: 1200px;
+            --bg-canvas: #090b10;
+            --bg-surface: #10141e;
+            --bg-surface-alt: #161c2b;
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-focus: rgba(99, 102, 241, 0.5);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            
+            --accent-primary: #6366f1;
+            --accent-glow: rgba(99, 102, 241, 0.25);
+            --accent-teal: #06b6d4;
+            --accent-emerald: #10b981;
+            --accent-amber: #f59e0b;
+            --accent-rose: #f43f5e;
+            --accent-purple: #a855f7;
+
+            --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --radius-md: 12px;
+            --radius-lg: 18px;
+            --radius-pill: 9999px;
+            --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* ========== BASE & JUTE WEAVE CANVAS ========== */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
-        html {
-            scroll-behavior: smooth;
-        }
+
         body {
-            font-family: 'Kalam', cursive, sans-serif;
-            background-color: var(--raw-linen);
-            /* Raw burlap/khadi sack cross-weave texture */
+            font-family: var(--font-sans);
+            background-color: var(--bg-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
             background-image: 
-                repeating-linear-gradient(0deg, rgba(74, 43, 22, 0.05) 0px, rgba(74, 43, 22, 0.05) 1px, transparent 1px, transparent 12px),
-                repeating-linear-gradient(90deg, rgba(74, 43, 22, 0.05) 0px, rgba(74, 43, 22, 0.05) 1px, transparent 1px, transparent 12px);
-            color: var(--mud-dark);
-            line-height: 1.55;
-            -webkit-font-smoothing: antialiased;
+                radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 85% 65%, rgba(236, 72, 153, 0.06) 0%, transparent 40%);
         }
 
-        h1, h2, h3, h4, .village-title {
-            font-family: 'Yatra One', cursive;
-            letter-spacing: 0.5px;
-            color: var(--mud-dark);
-            font-weight: 400;
-        }
         a {
             color: inherit;
             text-decoration: none;
         }
-        img {
-            display: block;
-            max-width: 100%;
-        }
-        button, input {
-            font-family: inherit;
-            border: none;
-            outline: none;
-            background: none;
-        }
 
         .container {
-            width: 100%;
-            max-width: var(--container);
+            max-width: 1320px;
             margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Clay Town Announcement Strip */
-        .town-crier-strip {
-            background: var(--clay-terracotta);
-            color: #fff;
-            border-bottom: 3px solid var(--soot-black);
-            padding: 8px 12px;
-            font-size: 14px;
-            text-align: center;
-            font-weight: 700;
-            letter-spacing: 0.8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-        }
-        .town-crier-strip i {
-            color: var(--turmeric-light);
-        }
-
-        /* Hand-carved Wooden Button Styles */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 10px 24px;
-            border: var(--border-rough);
-            border-radius: 6px 16px 4px 18px;
-            font-size: 16px;
-            font-weight: 700;
-            cursor: pointer;
-            box-shadow: var(--wood-shadow);
-            transition: transform 0.1s ease, box-shadow 0.1s ease;
-        }
-        .btn:hover {
-            transform: translate(-2px, -2px);
-            box-shadow: 6px 7px 0px var(--mud-dark);
-        }
-        .btn:active {
-            transform: translate(2px, 2px);
-            box-shadow: 2px 2px 0px var(--mud-dark);
-        }
-        .btn-terracotta {
-            background: var(--clay-terracotta);
-            color: #fff;
-        }
-        .btn-turmeric {
-            background: var(--turmeric);
-            color: var(--soot-black);
-        }
-        .btn-burlap {
-            background: #e8dbbe;
-            color: var(--mud-dark);
+            padding: 0 24px;
         }
 
         /* ========== HEADER ========== */
         header {
             position: sticky;
             top: 0;
-            z-index: 100;
-            background: #ede1cb;
-            border-bottom: 4px solid var(--mud-dark);
-            box-shadow: 0 4px 12px rgba(58, 34, 19, 0.15);
+            z-index: 50;
+            background: rgba(9, 11, 16, 0.85);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid var(--border-subtle);
         }
-        .header-inner {
+
+        .nav-inner {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 14px 0;
-            gap: 16px;
+            height: 72px;
         }
 
         .brand {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 26px;
-            padding: 4px 12px;
-            background: #fdf6e6;
-            border: var(--border-rough);
-            border-radius: 4px 14px 6px 18px;
-            box-shadow: var(--wood-shadow);
-            transform: rotate(-1deg);
-        }
-        .brand i {
-            color: var(--clay-terracotta);
-            font-size: 24px;
-        }
-        .brand span span {
-            color: var(--clay-terracotta);
+            gap: 12px;
+            font-weight: 800;
+            font-size: 20px;
+            letter-spacing: -0.5px;
         }
 
-        nav.main-nav ul {
-            display: flex;
-            gap: 8px;
-            list-style: none;
+        .brand-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-purple));
+            display: grid;
+            place-items: center;
+            color: #fff;
+            box-shadow: 0 0 20px var(--accent-glow);
         }
-        nav.main-nav li a {
+
+        .brand span span {
+            color: var(--accent-teal);
+        }
+
+        .nav-stats {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .stat-item {
             display: flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 14px;
-            border: 2px dashed transparent;
-            font-size: 16px;
+        }
+
+        .stat-badge {
+            font-family: var(--font-mono);
             font-weight: 700;
-            border-radius: 8px;
-            transition: all 0.2s;
-        }
-        nav.main-nav li a:hover,
-        nav.main-nav li a.active {
-            border-color: var(--mud-dark);
-            background: #dfcfb2;
-            transform: rotate(1deg);
+            color: var(--text-primary);
+            background: var(--bg-surface-alt);
+            padding: 2px 8px;
+            border-radius: var(--radius-pill);
+            border: 1px solid var(--border-subtle);
         }
 
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .search-wrap {
-            display: flex;
-            align-items: center;
-            background: #fdfaf3;
-            border: var(--border-rough);
-            border-radius: 8px 18px 6px 14px;
-            padding: 0 10px;
-            box-shadow: 2px 3px 0px var(--mud-dark);
-            min-width: 210px;
-        }
-        .search-wrap input {
-            padding: 8px 6px;
-            width: 100%;
-            font-size: 15px;
-            font-weight: 600;
-            color: var(--mud-dark);
-        }
-        .search-wrap input::placeholder {
-            color: var(--jute-rope);
-        }
-        .search-wrap button {
-            color: var(--mud-dark);
-            font-size: 16px;
-            cursor: pointer;
-            padding: 6px;
+        /* ========== HERO ========== */
+        .hero {
+            padding: 60px 0 32px;
+            text-align: center;
         }
 
-        .icon-btn {
-            width: 42px;
-            height: 42px;
-            border-radius: 8px 14px 6px 12px;
-            border: var(--border-rough);
-            background: #fdfaf3;
-            box-shadow: 2px 3px 0px var(--mud-dark);
-            display: grid;
-            place-items: center;
-            color: var(--mud-dark);
-            font-size: 17px;
-            cursor: pointer;
-            transition: transform 0.1s ease;
-        }
-        .icon-btn:hover {
-            background: var(--turmeric-light);
-            transform: translate(-2px, -2px);
-        }
-        .cart-wrap {
-            position: relative;
-        }
-        .cart-count {
-            position: absolute;
-            top: -6px;
-            right: -6px;
-            background: var(--clay-terracotta);
-            color: #fff;
-            font-size: 12px;
-            font-weight: 700;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            border: 2px solid var(--mud-dark);
-            display: grid;
-            place-items: center;
-        }
-
-        .mobile-toggle {
-            display: none;
-            width: 42px;
-            height: 42px;
-            border: var(--border-rough);
-            background: var(--turmeric);
-            border-radius: 6px;
-            font-size: 18px;
-            cursor: pointer;
-        }
-
-        #mobileMenu {
-            display: none;
-            background: #eedcb9;
-            border-bottom: 3px solid var(--mud-dark);
-            padding: 14px;
-        }
-        #mobileMenu ul {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-        #mobileMenu ul li a {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 14px;
-            border: 2px solid var(--mud-dark);
-            background: #fcf6e7;
-            font-weight: 700;
-        }
-
-        /* ========== HERO BANNER: CLAY HUT CHOPAL ========== */
-        .hero-banner {
-            position: relative;
-            background: #4a2816;
-            background-image: radial-gradient(#63361e 15%, transparent 16%), radial-gradient(#3a1e0f 15%, transparent 16%);
-            background-size: 24px 24px;
-            background-position: 0 0, 12px 12px;
-            color: #fff;
-            border: 4px solid var(--mud-dark);
-            border-radius: 12px 28px 10px 32px;
-            margin: 28px auto 0;
-            padding: 60px 48px;
-            box-shadow: var(--wood-shadow-lg);
-            overflow: hidden;
-        }
-        .hero-banner::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 12px;
-            background: repeating-linear-gradient(45deg, var(--turmeric), var(--turmeric) 15px, var(--clay-terracotta) 15px, var(--clay-terracotta) 30px);
-            border-bottom: 2px solid var(--soot-black);
-        }
-        .hero-banner .badge {
+        .hero-pill {
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            background: var(--turmeric);
-            color: var(--soot-black);
-            border: 2px solid var(--soot-black);
-            border-radius: 4px 12px 4px 10px;
-            padding: 4px 14px;
-            font-size: 14px;
-            font-weight: 700;
-            box-shadow: 2px 2px 0px var(--soot-black);
-            margin-bottom: 18px;
-            transform: rotate(-1deg);
+            gap: 8px;
+            padding: 6px 16px;
+            border-radius: var(--radius-pill);
+            background: rgba(99, 102, 241, 0.12);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            font-size: 12px;
+            font-weight: 600;
+            color: #a5b4fc;
+            margin-bottom: 20px;
         }
-        .hero-banner h1 {
-            font-size: 50px;
-            color: #f7e6c4;
+
+        .hero h1 {
+            font-size: 46px;
+            font-weight: 800;
+            letter-spacing: -1.2px;
             line-height: 1.15;
-            text-shadow: 3px 4px 0px #1a0f08;
             margin-bottom: 16px;
         }
-        .hero-banner p {
-            font-size: 18px;
-            max-width: 580px;
-            color: #edd1aa;
-            margin-bottom: 28px;
-            line-height: 1.6;
+
+        .hero h1 span {
+            background: linear-gradient(135deg, #fff 30%, #a5b4fc 70%, var(--accent-teal) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .hero-actions {
+
+        .hero p {
+            font-size: 17px;
+            color: var(--text-secondary);
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        /* ========== CONTROLS: SEARCH & FILTER ========== */
+        .controls-wrapper {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            margin-bottom: 36px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .search-row {
             display: flex;
-            gap: 14px;
+            gap: 12px;
+            margin-bottom: 18px;
             flex-wrap: wrap;
         }
 
-        /* ========== SECTIONS ========== */
-        .section {
-            padding: 50px 0 20px;
-        }
-        .section-header {
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-between;
-            border-bottom: 3px dashed var(--mud-dark);
-            padding-bottom: 12px;
-            margin-bottom: 32px;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-        .section-header h2 {
-            font-size: 32px;
-            display: inline-block;
-            background: #ede1cb;
-            border: 2px solid var(--mud-dark);
-            border-radius: 4px 12px 3px 10px;
-            padding: 2px 14px;
-            box-shadow: 3px 3px 0px var(--mud-dark);
-        }
-        .section-header p {
-            font-size: 15px;
-            color: var(--mud-medium);
-            margin-top: 6px;
-            font-weight: 600;
-        }
-        .section-header .view-all {
-            font-weight: 700;
-            font-size: 15px;
-            color: var(--clay-terracotta);
-            border-bottom: 2px solid var(--clay-terracotta);
-            transition: all 0.2s;
-        }
-        .section-header .view-all:hover {
-            color: var(--mud-dark);
-            border-bottom-color: var(--mud-dark);
-            letter-spacing: 0.5px;
+        .search-box {
+            flex: 1;
+            min-width: 280px;
+            position: relative;
         }
 
-        /* ========== CATEGORIES ========== */
-        .categories-grid {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 16px;
+        .search-box i {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
         }
-        .cat-card {
-            background: var(--card-parchment);
-            border: var(--border-rough);
-            border-radius: 8px 18px 6px 14px;
-            padding: 22px 12px;
-            text-align: center;
-            box-shadow: var(--wood-shadow);
+
+        .search-box input {
+            width: 100%;
+            height: 48px;
+            background: var(--bg-canvas);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 0 16px 0 46px;
+            color: var(--text-primary);
+            font-size: 14px;
+            font-family: inherit;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .search-box input:focus {
+            border-color: var(--border-focus);
+            box-shadow: 0 0 0 4px var(--accent-glow);
+        }
+
+        .search-box input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .select-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .select-box {
+            height: 48px;
+            background: var(--bg-canvas);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 0 14px;
+            color: var(--text-secondary);
+            font-size: 13.5px;
+            font-family: inherit;
+            outline: none;
             cursor: pointer;
-            transition: all 0.15s ease;
+            transition: var(--transition);
         }
-        .cat-card:hover {
-            transform: translate(-3px, -3px);
-            box-shadow: 6px 7px 0px var(--mud-dark);
-            background: #fff4d9;
+
+        .select-box:focus {
+            border-color: var(--border-focus);
         }
-        .cat-card .icon-wrap {
-            width: 54px;
-            height: 54px;
-            border: 2px solid var(--mud-dark);
-            background: #eedcb9;
-            border-radius: 50% 45% 55% 48%;
+
+        .category-pills {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+            scrollbar-width: none;
+        }
+
+        .category-pills::-webkit-scrollbar {
+            display: none;
+        }
+
+        .pill-btn {
+            border: 1px solid var(--border-subtle);
+            background: var(--bg-canvas);
+            color: var(--text-secondary);
+            padding: 8px 18px;
+            border-radius: var(--radius-pill);
+            font-size: 13px;
+            font-weight: 500;
+            white-space: nowrap;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .pill-btn:hover {
+            color: var(--text-primary);
+            border-color: rgba(255, 255, 255, 0.2);
+            background: var(--bg-surface-alt);
+        }
+
+        .pill-btn.active {
+            background: var(--accent-primary);
+            border-color: var(--accent-primary);
+            color: #fff;
+            box-shadow: 0 4px 14px var(--accent-glow);
+        }
+
+        /* ========== TOOL GRID ========== */
+        .results-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(370px, 1fr));
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+
+        .tool-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            transition: var(--transition);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .tool-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.6), 0 0 25px rgba(99, 102, 241, 0.15);
+        }
+
+        .card-top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 14px;
+            margin-bottom: 16px;
+        }
+
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .tool-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
             display: grid;
             place-items: center;
             font-size: 22px;
-            color: var(--clay-terracotta);
-            margin: 0 auto 12px;
-            box-shadow: 2px 2px 0px var(--mud-dark);
-        }
-        .cat-card h4 {
-            font-size: 16px;
-            color: var(--mud-dark);
-            margin-bottom: 2px;
-        }
-        .cat-card .count {
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--jute-rope);
+            background: var(--bg-surface-alt);
+            border: 1px solid var(--border-subtle);
+            color: #fff;
+            flex-shrink: 0;
         }
 
-        /* ========== PRODUCTS (TERRACOTTA & KHADI TILES) ========== */
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 22px;
+        .tool-meta h3 {
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            color: var(--text-primary);
         }
-        .product-card {
-            background: var(--card-parchment);
-            border: var(--border-rough);
-            border-radius: 10px 22px 8px 24px;
-            box-shadow: var(--wood-shadow);
+
+        .tool-creator {
+            font-size: 12.5px;
+            color: var(--text-muted);
             display: flex;
-            flex-direction: column;
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.15s ease, box-shadow 0.15s ease;
+            align-items: center;
+            gap: 5px;
         }
-        .product-card:hover {
-            transform: translate(-3px, -3px);
-            box-shadow: 6px 8px 0px var(--mud-dark);
-        }
-        .product-card .img-wrap {
-            position: relative;
-            background: #dfceb1;
-            aspect-ratio: 1 / 1;
-            border-bottom: 3px solid var(--mud-dark);
-            overflow: hidden;
-        }
-        .product-card .img-wrap img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: sepia(18%) contrast(102%);
-        }
-        .product-card .badge {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background: var(--turmeric);
-            color: var(--soot-black);
-            border: 2px solid var(--mud-dark);
-            border-radius: 4px 10px 4px 8px;
-            padding: 2px 10px;
+
+        .version-badge {
+            font-family: var(--font-mono);
             font-size: 12px;
             font-weight: 700;
-            box-shadow: 2px 2px 0px var(--mud-dark);
+            padding: 4px 10px;
+            border-radius: var(--radius-pill);
+            background: rgba(99, 102, 241, 0.15);
+            border: 1px solid rgba(99, 102, 241, 0.35);
+            color: #a5b4fc;
+            white-space: nowrap;
         }
-        .product-card .badge.sale {
-            background: var(--clay-terracotta);
-            color: #fff;
-        }
-        .product-card .wish-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            width: 34px;
-            height: 34px;
-            background: #fff;
-            border: 2px solid var(--mud-dark);
-            border-radius: 50%;
-            display: grid;
-            place-items: center;
-            font-size: 15px;
-            color: var(--mud-dark);
-            cursor: pointer;
-            box-shadow: 2px 2px 0px var(--mud-dark);
-            transition: all 0.1s;
-        }
-        .product-card .wish-btn:hover,
-        .product-card .wish-btn.active {
-            background: var(--clay-terracotta);
-            color: #fff;
-        }
-        .product-card .body {
-            padding: 16px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-        .product-card .body .category-tag {
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--clay-terracotta);
-            text-transform: uppercase;
-        }
-        .product-card .body h5 {
-            font-size: 17px;
-            color: var(--mud-dark);
-            line-height: 1.35;
-        }
-        .product-card .body .price-row {
-            display: flex;
-            align-items: baseline;
-            gap: 8px;
-            margin-top: 4px;
-        }
-        .product-card .body .price {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--clay-terracotta);
-        }
-        .product-card .body .old-price {
+
+        .tool-desc {
             font-size: 14px;
-            color: var(--jute-rope);
-            text-decoration: line-through;
-        }
-        .product-card .body .rating {
-            font-size: 13px;
-            color: var(--turmeric);
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-        .product-card .body .rating span {
-            color: var(--mud-medium);
-            font-weight: 700;
-            font-size: 12px;
-        }
-        .product-card .footer {
-            padding: 0 16px 16px;
-        }
-        .product-card .footer .add-btn {
-            width: 100%;
-            padding: 10px;
-            background: #eedcb9;
-            border: var(--border-rough);
-            border-radius: 6px 14px 4px 12px;
-            color: var(--mud-dark);
-            font-size: 15px;
-            font-weight: 700;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            box-shadow: 2px 3px 0px var(--mud-dark);
-            transition: all 0.1s;
-        }
-        .product-card .footer .add-btn:hover {
-            background: var(--clay-terracotta);
-            color: #fff;
-            transform: translate(-2px, -2px);
-            box-shadow: 4px 4px 0px var(--mud-dark);
-        }
-        .product-card .footer .add-btn.added {
-            background: var(--leaf-green);
-            color: #fff;
-        }
-
-        /* ========== DEAL: CHALKBOARD & CLAY POT ========== */
-        .deal-wrap {
-            display: flex;
-            background: #fbf5e8;
-            border: var(--border-rough);
-            border-radius: 14px 32px 10px 30px;
-            box-shadow: var(--wood-shadow-lg);
-            overflow: hidden;
-        }
-        .deal-wrap .deal-img {
-            flex: 0 0 45%;
-            background: #dfcbaf;
-            border-right: 3px solid var(--mud-dark);
-        }
-        .deal-wrap .deal-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: sepia(20%);
-        }
-        .deal-wrap .deal-content {
-            flex: 1;
-            padding: 44px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        .deal-wrap .deal-content .tag {
-            align-self: flex-start;
-            background: var(--clay-terracotta);
-            color: #fff;
-            border: 2px solid var(--mud-dark);
-            border-radius: 4px 10px;
-            padding: 4px 12px;
-            font-size: 13px;
-            font-weight: 700;
-            box-shadow: 2px 2px 0px var(--mud-dark);
-            margin-bottom: 12px;
-        }
-        .deal-wrap .deal-content h3 {
-            font-size: 36px;
-            margin-bottom: 8px;
-        }
-        .deal-wrap .deal-content .desc {
-            font-size: 16px;
-            color: var(--mud-medium);
+            color: var(--text-secondary);
             margin-bottom: 18px;
-        }
-        .deal-wrap .deal-content .price-big {
-            font-size: 34px;
-            font-weight: 700;
-            color: var(--clay-terracotta);
-        }
-        .deal-wrap .deal-content .price-big .old {
-            font-size: 20px;
-            color: var(--jute-rope);
-            text-decoration: line-through;
-            margin-left: 10px;
-        }
-        .deal-wrap .deal-content .stock {
-            font-size: 14px;
-            margin: 6px 0 18px;
-            font-weight: 700;
-        }
-        .deal-wrap .deal-content .stock strong {
-            background: var(--turmeric-light);
-            padding: 2px 8px;
-            border: 1px solid var(--mud-dark);
-            border-radius: 4px;
+            line-height: 1.55;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
-        /* Chalkboard / Wooden Timer */
-        .timer-grid {
+        .spec-pills {
             display: flex;
-            gap: 12px;
-            margin-bottom: 24px;
-        }
-        .timer-box {
-            background: #2b1a11;
-            color: #f7e6c4;
-            border: 2px solid var(--mud-dark);
-            border-radius: 6px 12px 4px 10px;
-            padding: 8px 14px;
-            min-width: 64px;
-            text-align: center;
-            box-shadow: 2px 3px 0px var(--mud-dark);
-        }
-        .timer-box .num {
-            font-family: 'Yatra One', cursive;
-            font-size: 28px;
-            line-height: 1.1;
-            color: var(--turmeric);
-        }
-        .timer-box .label {
-            font-size: 11px;
-            text-transform: uppercase;
-            color: #d1b897;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 20px;
         }
 
-        /* ========== TESTIMONIALS (VILLAGE CHOPAL CHATS) ========== */
-        .testimonials-scroll {
-            display: flex;
-            gap: 20px;
-            overflow-x: auto;
-            padding: 10px 4px 24px;
-            scroll-snap-type: x mandatory;
-        }
-        .testimonials-scroll::-webkit-scrollbar {
-            height: 8px;
-        }
-        .testimonials-scroll::-webkit-scrollbar-thumb {
-            background: var(--mud-medium);
-            border-radius: 4px;
-        }
-        .testimonial-card {
-            flex: 0 0 340px;
-            background: #fbf5e8;
-            border: var(--border-rough);
-            border-radius: 10px 24px 8px 20px;
-            box-shadow: var(--wood-shadow);
-            padding: 24px;
-            scroll-snap-align: start;
-        }
-        .testimonial-card .stars {
-            color: var(--turmeric);
-            font-size: 15px;
-            margin-bottom: 8px;
-        }
-        .testimonial-card blockquote {
-            font-size: 15px;
-            color: var(--mud-dark);
-            line-height: 1.6;
-            margin-bottom: 16px;
-            font-style: italic;
-        }
-        .testimonial-card .author {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            border-top: 2px dashed var(--jute-rope);
-            padding-top: 12px;
-        }
-        .testimonial-card .author .avatar {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            border: 2px solid var(--mud-dark);
-            object-fit: cover;
-        }
-        .testimonial-card .author .name {
-            font-family: 'Yatra One', cursive;
-            font-size: 16px;
-        }
-        .testimonial-card .author .role {
-            font-size: 12px;
-            color: var(--mud-medium);
+        .spec-item {
+            font-size: 11.5px;
+            background: var(--bg-surface-alt);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-muted);
+            padding: 3px 9px;
+            border-radius: 6px;
+            font-family: var(--font-mono);
         }
 
-        /* ========== NEWSLETTER: DANDORA / CHAUCHAL POST ========== */
-        .newsletter-wrap {
-            background: #462615;
-            color: #fff;
-            border: var(--border-rough);
-            border-radius: 14px 34px 10px 30px;
-            padding: 44px;
+        .card-footer {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 30px;
-            flex-wrap: wrap;
-            box-shadow: var(--wood-shadow-lg);
-            position: relative;
-        }
-        .newsletter-wrap .text h3 {
-            font-size: 32px;
-            color: #f7e6c4;
-            margin-bottom: 6px;
-        }
-        .newsletter-wrap .text p {
-            color: #dfceb1;
-            font-size: 16px;
-        }
-        .newsletter-wrap form {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            flex: 1;
-            max-width: 480px;
-        }
-        .newsletter-wrap form input {
-            flex: 1;
-            min-width: 220px;
-            padding: 12px 18px;
-            background: #fdfaf3;
-            border: var(--border-rough);
-            border-radius: 6px 16px 4px 12px;
-            font-size: 15px;
-            font-weight: 700;
-            color: var(--mud-dark);
-        }
-        .newsletter-wrap form input::placeholder {
-            color: var(--jute-rope);
-        }
-        #newsletterMsg {
-            width: 100%;
-            margin-top: 8px;
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--turmeric-light);
+            padding-top: 16px;
+            border-top: 1px solid var(--border-subtle);
         }
 
-        /* ========== FOOTER ========== */
-        footer {
-            margin-top: 50px;
-            background: #eedcb9;
-            border-top: 4px solid var(--mud-dark);
-            padding: 46px 0 26px;
-        }
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 36px;
-            margin-bottom: 32px;
-        }
-        .footer-grid .brand-col p {
-            font-size: 14px;
-            color: var(--mud-medium);
-            margin: 12px 0 16px;
+        .badge-type {
+            font-size: 12px;
             font-weight: 600;
-            max-width: 310px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
-        .footer-grid .brand-col .socials {
+
+        .type-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+        }
+
+        .dot-open { background: var(--accent-emerald); box-shadow: 0 0 8px var(--accent-emerald); }
+        .dot-proprietary { background: var(--accent-primary); box-shadow: 0 0 8px var(--accent-primary); }
+        .dot-freemium { background: var(--accent-amber); box-shadow: 0 0 8px var(--accent-amber); }
+
+        .btn-inspect {
+            padding: 8px 16px;
+            border-radius: var(--radius-md);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
             display: flex;
-            gap: 10px;
+            align-items: center;
+            gap: 6px;
         }
-        .footer-grid .brand-col .socials a {
-            width: 38px;
-            height: 38px;
-            border: 2px solid var(--mud-dark);
-            background: #fdfaf3;
-            border-radius: 6px 12px 4px 10px;
+
+        .btn-inspect:hover {
+            background: var(--accent-primary);
+            border-color: var(--accent-primary);
+            box-shadow: 0 4px 14px var(--accent-glow);
+        }
+
+        /* ========== MODAL DIALOG ========== */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(8px);
+            z-index: 100;
+            display: none;
+            place-items: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: grid;
+        }
+
+        .modal-card {
+            background: var(--bg-surface);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: var(--radius-lg);
+            width: 100%;
+            max-width: 680px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+            position: relative;
+            animation: modalFadeIn 0.25s ease-out;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.96); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .modal-header {
+            padding: 24px;
+            border-bottom: 1px solid var(--border-subtle);
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+
+        .modal-close {
+            background: var(--bg-surface-alt);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            cursor: pointer;
             display: grid;
             place-items: center;
-            color: var(--mud-dark);
-            box-shadow: 2px 2px 0px var(--mud-dark);
-            transition: all 0.1s;
+            transition: var(--transition);
         }
-        .footer-grid .brand-col .socials a:hover {
-            background: var(--turmeric);
-            transform: translate(-2px, -2px);
+
+        .modal-close:hover {
+            color: #fff;
+            background: var(--accent-rose);
         }
-        .footer-grid .col h5 {
-            font-family: 'Yatra One', cursive;
-            font-size: 18px;
-            margin-bottom: 12px;
-            color: var(--mud-dark);
+
+        .modal-body {
+            padding: 24px;
         }
-        .footer-grid .col ul {
+
+        .spec-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .spec-box {
+            background: var(--bg-canvas);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 14px;
+        }
+
+        .spec-label {
+            font-size: 11.5px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+            font-family: var(--font-mono);
+        }
+
+        .spec-value {
+            font-size: 14.5px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .modal-section-title {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--text-muted);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .feature-bullets {
             list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 10px;
+            margin-bottom: 24px;
         }
-        .footer-grid .col ul li a {
-            font-size: 15px;
-            color: var(--mud-medium);
-            font-weight: 700;
-            transition: color 0.15s;
-        }
-        .footer-grid .col ul li a:hover {
-            color: var(--clay-terracotta);
-            padding-left: 4px;
-        }
-        .footer-bottom {
-            text-align: center;
-            border-top: 2px dashed var(--mud-dark);
-            padding-top: 20px;
+
+        .feature-bullets li {
             font-size: 14px;
-            color: var(--mud-medium);
-            font-weight: 700;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .feature-bullets li i {
+            color: var(--accent-emerald);
+            margin-top: 3px;
+        }
+
+        .modal-footer {
+            padding: 20px 24px;
+            border-top: 1px solid var(--border-subtle);
+            background: var(--bg-canvas);
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            border-bottom-left-radius: var(--radius-lg);
+            border-bottom-right-radius: var(--radius-lg);
+        }
+
+        .btn-link {
+            padding: 10px 20px;
+            border-radius: var(--radius-md);
+            background: var(--accent-primary);
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .btn-link:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
         }
 
         /* ========== RESPONSIVE ========== */
-        @media (max-width: 1100px) {
-            .products-grid { grid-template-columns: repeat(3, 1fr); }
-            .categories-grid { grid-template-columns: repeat(3, 1fr); }
-        }
-        @media (max-width: 900px) {
-            .hero-banner h1 { font-size: 38px; }
-            .hero-banner { padding: 40px 24px; }
-            .deal-wrap { flex-direction: column; }
-            .deal-wrap .deal-img { flex: 0 0 260px; border-right: none; border-bottom: 3px solid var(--mud-dark); }
-            .footer-grid { grid-template-columns: 1fr 1fr; }
-        }
         @media (max-width: 768px) {
-            nav.main-nav { display: none; }
-            .mobile-toggle { display: grid; place-items: center; }
-            .products-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
-            .categories-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-            .search-wrap { min-width: 140px; }
-            .footer-grid { grid-template-columns: 1fr; gap: 24px; }
-        }
-        @media (max-width: 480px) {
-            .products-grid { grid-template-columns: 1fr; }
-            .hero-banner h1 { font-size: 30px; }
-            .deal-wrap .deal-content h3 { font-size: 26px; }
-            .timer-box { min-width: 50px; padding: 6px 8px; }
-            .timer-box .num { font-size: 22px; }
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 32px;
+            }
+            .nav-stats {
+                display: none;
+            }
+            .spec-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
-
 <body>
 
-    <!-- Village Announcement Ribbon -->
-    <div class="town-crier-strip">
-        <i class="fas fa-bullhorn"></i>
-        <span>WEEKLY VILLAGE SANTHA: 100% PURE ARTISAN HANDCRAFTS • NATURAL HARVEST PRODUCTS • FREE RUSTIC JUTE TOTE BAG</span>
-        <i class="fas fa-bullhorn"></i>
-    </div>
-
-    <!-- ===== HEADER ===== -->
+    <!-- Header Navigation -->
     <header>
-        <div class="container header-inner">
-            <div style="display:flex;align-items:center;gap:12px;">
-                <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <a class="brand" href="#">
-                    <i class="fas fa-seedling"></i>
-                    <span>Palle<span>Bazaar</span></span>
-                </a>
+        <div class="container nav-inner">
+            <div class="brand">
+                <div class="brand-icon"><i class="fas fa-microchip"></i></div>
+                <span>Model<span>Dex</span></span>
             </div>
-
-            <nav class="main-nav" id="mainNav" aria-label="Main navigation">
-                <ul>
-                    <li><a href="#" class="active"><i class="fas fa-campground"></i> Chaupal</a></li>
-                    <li><a href="#categories"><i class="fas fa-wheat-awn"></i> Harvest</a></li>
-                    <li><a href="#products"><i class="fas fa-fire-flame-curved"></i> Fresh Crafts</a></li>
-                    <li><a href="#deals"><i class="fas fa-tags"></i> Basti Deals</a></li>
-                    <li><a href="#testimonials"><i class="fas fa-comments"></i> Panchayat Talk</a></li>
-                </ul>
-            </nav>
-
-            <div style="display:flex;align-items:center;gap:10px;">
-                <div class="search-wrap" role="search">
-                    <input type="search" id="searchInput" placeholder="Search village bazaar..." aria-label="Search items" />
-                    <button id="searchBtn" aria-label="Submit search"><i class="fas fa-search"></i></button>
+            
+            <div class="nav-stats">
+                <div class="stat-item">
+                    <span>Cataloged Tools:</span>
+                    <span class="stat-badge" id="totalToolsCount">0</span>
                 </div>
-
-                <div class="header-actions">
-                    <button class="icon-btn" title="Artisan Account" aria-label="Account"><i class="fas fa-user-gear"></i></button>
-                    <button class="icon-btn" title="Saved items" aria-label="Wishlist"><i class="fas fa-heart"></i></button>
-                    <div class="cart-wrap">
-                        <button class="icon-btn" id="cartBtn" title="Jute Basket" aria-label="Cart">
-                            <i class="fas fa-basket-shopping"></i>
-                        </button>
-                        <span class="cart-count" id="cartCount">0</span>
-                    </div>
+                <div class="stat-item">
+                    <span>Active Categories:</span>
+                    <span class="stat-badge">6</span>
                 </div>
-            </div>
-        </div>
-
-        <!-- Mobile Navigation Menu -->
-        <div id="mobileMenu">
-            <div class="container">
-                <ul>
-                    <li><a href="#"><i class="fas fa-campground"></i> Chaupal</a></li>
-                    <li><a href="#categories"><i class="fas fa-wheat-awn"></i> Harvest</a></li>
-                    <li><a href="#products"><i class="fas fa-fire-flame-curved"></i> Fresh Crafts</a></li>
-                    <li><a href="#deals"><i class="fas fa-tags"></i> Basti Deals</a></li>
-                    <li><a href="#testimonials"><i class="fas fa-comments"></i> Panchayat Talk</a></li>
-                </ul>
+                <div class="stat-item">
+                    <span>State:</span>
+                    <span class="stat-badge" style="color:var(--accent-emerald);">Live 2026</span>
+                </div>
             </div>
         </div>
     </header>
 
-    <!-- ===== MAIN ===== -->
-    <main>
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-pill">
+                <i class="fas fa-layer-group"></i> 2026 Generative AI Ecosystem Registry
+            </div>
+            <h1>All Popular AI Tools &amp; Models<br><span>Live Versions &amp; Benchmark Specs</span></h1>
+            <p>A comprehensive inventory of state-of-the-art frontier reasoning models, autonomous code agents, multimodal engines, voice synthesizers, and creative media tools.</p>
+        </section>
 
-        <!-- VILLAGE CHAUPAL HERO BANNER -->
-        <div class="container">
-            <section class="hero-banner" aria-label="Village marketplace banner">
-                <div class="badge"><i class="fas fa-sun"></i> Direct From Rural Potteries &amp; Weavers</div>
-                <h1>PURE EARTHEN ROOTS, <br>HANDMADE HONESTY.</h1>
-                <p>No plastics, no mass factories. Discover sun-baked clay vessels, handloom khadi fabrics, organic forest spices, and hand-beaten brass bells straight from village artisans.</p>
-                <div class="hero-actions">
-                    <button class="btn btn-terracotta" id="shopNow"><i class="fas fa-arrow-right"></i> Explore Bazaar</button>
-                    <button class="btn btn-turmeric" id="exploreDeals"><i class="fas fa-hourglass-half"></i> Today's Haat Deal</button>
+        <!-- Search & Filtering Interface -->
+        <section class="controls-wrapper">
+            <div class="search-row">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search by model name, organization (OpenAI, Anthropic, Google...), or capability...">
                 </div>
-            </section>
+                
+                <div class="select-group">
+                    <select class="select-box" id="licenseFilter">
+                        <option value="all">All Access Models</option>
+                        <option value="Open Weights">Open Weights / Open Source</option>
+                        <option value="Proprietary API">Proprietary API</option>
+                        <option value="Freemium Web">Freemium Web &amp; API</option>
+                    </select>
+
+                    <select class="select-box" id="sortBy">
+                        <option value="featured">Sort: Featured</option>
+                        <option value="name">Sort: Name (A-Z)</option>
+                        <option value="version">Sort: Latest Versions</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Category Pills -->
+            <div class="category-pills" id="categoryPills">
+                <button class="pill-btn active" data-cat="all"><i class="fas fa-globe"></i> All AI Domains</button>
+                <button class="pill-btn" data-cat="llm"><i class="fas fa-brain"></i> Frontier LLMs &amp; Reasoning</button>
+                <button class="pill-btn" data-cat="code"><i class="fas fa-code"></i> Coding &amp; Agentic IDEs</button>
+                <button class="pill-btn" data-cat="image"><i class="fas fa-image"></i> Image &amp; Generative Art</button>
+                <button class="pill-btn" data-cat="video"><i class="fas fa-video"></i> Video &amp; World Simulators</button>
+                <button class="pill-btn" data-cat="audio"><i class="fas fa-headphones"></i> Voice, Speech &amp; Music</button>
+                <button class="pill-btn" data-cat="research"><i class="fas fa-compass"></i> Research &amp; Deep Search</button>
+            </div>
+        </section>
+
+        <!-- Meta Count Bar -->
+        <div class="results-meta">
+            <div>Showing <strong id="visibleCount" style="color:var(--text-primary);">0</strong> models matching criteria</div>
+            <div style="font-size:12px; font-family:var(--font-mono);"><i class="fas fa-circle-check" style="color:var(--accent-emerald);"></i> Verified against latest production releases</div>
         </div>
 
-        <!-- DEPARTMENTS / SECTIONS -->
-        <section class="section" id="categories" aria-labelledby="cat-title">
-            <div class="container">
-                <div class="section-header">
-                    <div>
-                        <h2 id="cat-title">Village Mandi</h2>
-                        <p>Browse by traditional rural craft and natural farm produce</p>
-                    </div>
-                    <a href="#" class="view-all">All Mandi Stalls <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <div class="categories-grid" id="categoriesGrid" aria-live="polite"></div>
-            </div>
-        </section>
-
-        <!-- PRODUCTS -->
-        <section class="section" id="products" aria-labelledby="prod-title">
-            <div class="container">
-                <div class="section-header">
-                    <div>
-                        <h2 id="prod-title">Fresh From The Kiln &amp; Loom</h2>
-                        <p>Authentic handmade wares shaped by generational heritage</p>
-                    </div>
-                    <a href="#" class="view-all">View All Products <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <div class="products-grid" id="productsGrid" aria-live="polite"></div>
-            </div>
-        </section>
-
-        <!-- DAILY HAAT DEAL -->
-        <section class="section" id="deals" aria-labelledby="deal-title">
-            <div class="container">
-                <div class="section-header">
-                    <div>
-                        <h2 id="deal-title">🌾 Special Haat Spotlight</h2>
-                        <p>Limited batch artisan pottery from rural clay-workers</p>
-                    </div>
-                </div>
-                <div class="deal-wrap">
-                    <div class="deal-img">
-                        <img src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?auto=format&fit=crop&w=900&q=80" alt="Handcrafted Red Clay Pot Set" loading="lazy">
-                    </div>
-                    <div class="deal-content">
-                        <span class="tag"><i class="fas fa-fire"></i> Sun-Baked Clay Set</span>
-                        <h3>Handcrafted Red Clay Cooking Matka &amp; Bowls</h3>
-                        <p class="desc">Natural unglazed porous terracotta fired with husk. Retains alkaline nutrients, enhances natural flavours, and brings authentic earthy aroma to home-cooked meals.</p>
-                        <div>
-                            <span class="price-big">₹850 <span class="old">₹1,200</span></span>
-                        </div>
-                        <p class="stock">Artisan kiln capacity: Only <strong>14 pots</strong> remaining today</p>
-                        <div class="timer-grid" id="dealTimer">
-                            <div class="timer-box">
-                                <div class="num" id="dealDays">00</div>
-                                <div class="label">Days</div>
-                            </div>
-                            <div class="timer-box">
-                                <div class="num" id="dealHours">00</div>
-                                <div class="label">Hours</div>
-                            </div>
-                            <div class="timer-box">
-                                <div class="num" id="dealMinutes">00</div>
-                                <div class="label">Mins</div>
-                            </div>
-                            <div class="timer-box">
-                                <div class="num" id="dealSeconds">00</div>
-                                <div class="label">Secs</div>
-                            </div>
-                        </div>
-                        <button class="btn btn-terracotta" id="buyDeal" style="align-self:flex-start;"><i class="fas fa-basket-shopping"></i> Put In Jute Basket</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- PANCHAYAT REVIEWS -->
-        <section class="section" id="testimonials" aria-labelledby="test-title">
-            <div class="container">
-                <div class="section-header">
-                    <div>
-                        <h2 id="test-title">Panchayat &amp; Patron Words</h2>
-                        <p>Honest feedback from people supporting rural village artisans</p>
-                    </div>
-                </div>
-                <div class="testimonials-scroll" id="testimonialsList"></div>
-            </div>
-        </section>
-
-        <!-- DANDORA ANNOUNCEMENT DISPATCH -->
-        <section class="section" aria-labelledby="news-title">
-            <div class="container">
-                <div class="newsletter-wrap">
-                    <div class="text">
-                        <h3 id="news-title">Hear The Village Dandora</h3>
-                        <p>Get notified when organic winter harvests and new clay batches arrive.</p>
-                    </div>
-                    <form id="newsletterForm" onsubmit="return false;">
-                        <input type="email" id="newsletterEmail" placeholder="Enter your email letter..." aria-label="Email" required />
-                        <button class="btn btn-turmeric" id="subscribeBtn"><i class="fas fa-drum"></i> Join Haat</button>
-                        <div id="newsletterMsg"></div>
-                    </form>
-                </div>
-            </div>
-        </section>
-
+        <!-- Grid Container for Tool Cards -->
+        <section class="tools-grid" id="toolsGrid"></section>
     </main>
 
-    <!-- ===== FOOTER ===== -->
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="brand-col">
-                    <a class="brand" href="#">
-                        <i class="fas fa-seedling"></i>
-                        <span>Palle<span>Bazaar</span></span>
-                    </a>
-                    <p>Preserving ancestral craftsmanship, hand-crushed harvests, and rural dignity with zero middlemen.</p>
-                    <div class="socials">
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+    <!-- Modal for Detailed Specification Sheet -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-card">
+            <div class="modal-header">
+                <div class="card-title-group">
+                    <div class="tool-avatar" id="modalIcon"><i class="fas fa-brain"></i></div>
+                    <div>
+                        <h3 id="modalTitle" style="font-size: 20px;">Model Name</h3>
+                        <div class="tool-creator" id="modalCreator">Company Name</div>
                     </div>
                 </div>
-                <div class="col">
-                    <h5>Gram Mandi</h5>
-                    <ul>
-                        <li><a href="#">About Rural Artisans</a></li>
-                        <li><a href="#">Potter Cooperatives</a></li>
-                        <li><a href="#">Loom Guilds</a></li>
-                        <li><a href="#">Organic Certification</a></li>
-                    </ul>
-                </div>
-                <div class="col">
-                    <h5>Support Desk</h5>
-                    <ul>
-                        <li><a href="#">Clay Care Instructions</a></li>
-                        <li><a href="#">Village Transport Tracking</a></li>
-                        <li><a href="#">Hassle-Free Replacement</a></li>
-                        <li><a href="#">Contact Gram Sevak</a></li>
-                    </ul>
-                </div>
-                <div class="col">
-                    <h5>Fair Trade</h5>
-                    <ul>
-                        <li><a href="#">Artisan Wage Promise</a></li>
-                        <li><a href="#">Plastic-Free Shipping</a></li>
-                        <li><a href="#">Privacy Protocol</a></li>
-                        <li><a href="#">Terms of Basti</a></li>
-                    </ul>
-                </div>
+                <button class="modal-close" id="modalCloseBtn"><i class="fas fa-times"></i></button>
             </div>
-            <div class="footer-bottom">
-                &copy; <span id="year"></span> PalleBazaar. Celebrating Village Life, Pure Earth &amp; Generational Hands.
+            
+            <div class="modal-body">
+                <div class="spec-grid">
+                    <div class="spec-box">
+                        <div class="spec-label">Current Release Version</div>
+                        <div class="spec-value" id="modalVersion">v1.0</div>
+                    </div>
+                    <div class="spec-box">
+                        <div class="spec-label">Context Window / Capacity</div>
+                        <div class="spec-value" id="modalContext">128K Tokens</div>
+                    </div>
+                    <div class="spec-box">
+                        <div class="spec-label">Architecture / Backbone</div>
+                        <div class="spec-value" id="modalArch">Transformer MoE</div>
+                    </div>
+                    <div class="spec-box">
+                        <div class="spec-label">Access Model / License</div>
+                        <div class="spec-value" id="modalLicense">Proprietary</div>
+                    </div>
+                </div>
+
+                <div class="modal-section-title">Core Architecture &amp; Key Milestones</div>
+                <p id="modalLongDesc" style="font-size: 14.5px; color: var(--text-secondary); margin-bottom: 20px;"></p>
+
+                <div class="modal-section-title">Primary Capabilities</div>
+                <ul class="feature-bullets" id="modalFeatures"></ul>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn-inspect" id="modalDismissBtn">Close</button>
+                <a href="#" target="_blank" class="btn-link" id="modalDocLink">
+                    <span>Visit Documentation</span> <i class="fas fa-arrow-up-right-from-square"></i>
+                </a>
             </div>
         </div>
-    </footer>
+    </div>
 
-    <!-- ===== JAVASCRIPT ===== -->
+    <!-- JavaScript Data and Application Engine -->
     <script>
-        const CATEGORIES = [
-            { id: 'terracotta', name: 'Clay & Terracotta', icon: 'fa-jar', count: 28 },
-            { id: 'khadi', name: 'Handloom Khadi', icon: 'fa-shirt', count: 34 },
-            { id: 'spices', name: 'Stone-Ground Spices', icon: 'fa-mortar-pestle', count: 19 },
-            { id: 'brass', name: 'Brass & Copper Urns', icon: 'fa-bell', count: 22 },
-            { id: 'wood', name: 'Neem Wood Utensils', icon: 'fa-tree', count: 17 },
-            { id: 'bamboo', name: 'Bamboo Baskets', icon: 'fa-basket-shopping', count: 25 }
-        ];
-
-        const PRODUCTS = [
-            { id: 1, title: 'Unglazed Red Clay Water Matka (5L)', price: 450, oldPrice: 600, rating: 5, reviews: 112, badge: 'Kiln Fired',
-                img: 'https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&w=600&q=80',
-                category: 'Clay & Terracotta' },
-            { id: 2, title: 'Hand-Spun Khadi Cotton Dupatta', price: 680, rating: 5, reviews: 74, badge: 'Handloom',
-                img: 'https://images.unsplash.com/photo-1609357605129-26f69add5d6e?auto=format&fit=crop&w=600&q=80',
-                category: 'Handloom Khadi' },
-            { id: 3, title: 'Cast Pure Brass Pooja Diya Bell Set', price: 950, oldPrice: 1200, rating: 5, reviews: 88, badge: 'Artisan',
-                img: 'https://images.unsplash.com/photo-1606293926075-69a00dbfde81?auto=format&fit=crop&w=600&q=80',
-                category: 'Brass & Copper Urns' },
-            { id: 4, title: 'Raw Wild Forest Honey (500g Jar)', price: 380, rating: 5, reviews: 145, badge: 'Wild Harvest',
-                img: 'https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=600&q=80',
-                category: 'Stone-Ground Spices' },
-            { id: 5, title: 'Hand-Carved Neem Wood Ladle Set', price: 299, rating: 4, reviews: 52, badge: 'Organic',
-                img: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=600&q=80',
-                category: 'Neem Wood Utensils' },
-            { id: 6, title: 'Natural Cane Storage Tokri Basket', price: 340, rating: 5, reviews: 90, badge: 'Eco-Friendly',
-                img: 'https://images.unsplash.com/photo-1590736969955-71cc94801759?auto=format&fit=crop&w=600&q=80',
-                category: 'Bamboo Baskets' },
-            { id: 7, title: 'Cold-Pressed Groundnut Oil (1 Litre)', price: 260, oldPrice: 320, rating: 5, reviews: 130, badge: 'Wood Ghani',
-                img: 'https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=600&q=80',
-                category: 'Stone-Ground Spices' },
-            { id: 8, title: 'Village Raw Leather Mojari Jutti', price: 790, rating: 4, reviews: 63, badge: 'Handmade',
-                img: 'https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=600&q=80',
-                category: 'Handloom Khadi' }
-        ];
-
-        const TESTIMONIALS = [
+        // Database of popular AI tools, latest versions, and benchmark specifications
+        const AI_REGISTRY = [
+            // LLMs & REASONING
             {
-                name: 'Ramanaiah Garu',
-                role: 'Village Elder & Organic Farmer',
-                avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=80&q=80',
-                text: 'The red clay water pot keeps drinking water naturally chilled and fragrant. Reminded me of my childhood home in the fields.',
-                stars: 5
+                id: "claude-3-7",
+                name: "Claude",
+                version: "3.7 Sonnet",
+                category: "llm",
+                creator: "Anthropic",
+                avatarIcon: "fa-solid fa-feather-pointed",
+                license: "Proprietary API",
+                context: "200,000 tokens",
+                architecture: "Hybrid Reasoning LLM (Standard + Extended Thinking)",
+                description: "Frontier hybrid reasoning model capable of instantaneous responses alongside deep, continuous chain-of-thought processing.",
+                specs: ["Hybrid Thinking", "200K Context", "SWE-bench Leader", "Computer Use API"],
+                longDesc: "Claude 3.7 Sonnet introduces the first hybrid reasoning architecture, allowing developers to dynamically allocate reasoning token budgets or run standard inference. Excels at complex software engineering, enterprise agentic actions, and long-horizon tasks.",
+                features: [
+                    "Dynamic reasoning token budget control from 0 to 64k tokens",
+                    "State-of-the-art SWE-bench Verified coding scores",
+                    "Native support for automated computer use and tool calling",
+                    "Robust document comprehension across dense financial and legal texts"
+                ],
+                url: "https://www.anthropic.com/claude"
             },
             {
-                name: 'Lakshmi Devi',
-                role: 'Handloom Enthusiast',
-                avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=80&q=80',
-                text: 'The khadi weave is soft, breathable, and honest. Real respect to the rural weavers keeping our Indian roots alive.',
-                stars: 5
+                id: "o3-mini",
+                name: "OpenAI o3-mini",
+                version: "o3-mini (High/Med/Low)",
+                category: "llm",
+                creator: "OpenAI",
+                avatarIcon: "fa-solid fa-infinity",
+                license: "Proprietary API",
+                context: "200,000 tokens",
+                architecture: "Reinforcement-Learned Reasoning Model",
+                description: "Specialized STEM reasoning model tailored for complex math, algorithmic competition coding, and science proofs.",
+                specs: ["STEM Specialist", "Variable Effort", "Fast Inference", "Function Calling"],
+                longDesc: "o3-mini delivers deep logical reasoning at low cost and rapid speeds, giving developers three distinct reasoning effort parameters (Low, Medium, High) to balance latency and problem-solving depth.",
+                features: [
+                    "Exceptional performance on AIME math and Codeforces benchmarks",
+                    "Configurable reasoning effort to balance speed vs. depth",
+                    "Structured JSON outputs and native tool integration",
+                    "High throughput optimized for high-volume agentic loops"
+                ],
+                url: "https://openai.com"
             },
             {
-                name: 'Srinivas Murthy',
-                role: 'Home Cook & Food Lover',
-                avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=80&q=80',
-                text: 'Cooking dal and rice in terracotta handi completely transformed the taste. Clean straw packaging with zero plastic.',
-                stars: 5
+                id: "gpt-4o",
+                name: "GPT-4o",
+                version: "Omni (2024-11-20)",
+                category: "llm",
+                creator: "OpenAI",
+                avatarIcon: "fa-solid fa-bolt",
+                license: "Freemium Web",
+                context: "128,000 tokens",
+                architecture: "End-to-End Native Multimodal Transformer",
+                description: "Flagship omni model unifying native real-time audio conversation, computer vision, code generation, and text reasoning.",
+                specs: ["Real-time Voice", "Vision Input", "128K Context", "Global Knowledge"],
+                longDesc: "GPT-4o trains audio, vision, and text end-to-end within a single neural network, enabling natural human-like voice conversational latencies as fast as 232 milliseconds.",
+                features: [
+                    "Native audio-in, audio-out with emotion and cadence modulation",
+                    "High-resolution vision processing for screenshots, diagrams, and documents",
+                    "Fast inference with widespread developer SDK support",
+                    "Massive language support spanning 50+ languages"
+                ],
+                url: "https://openai.com/gpt-4o"
+            },
+            {
+                id: "deepseek-r1",
+                name: "DeepSeek-R1",
+                version: "Release 1.0",
+                category: "llm",
+                creator: "DeepSeek AI",
+                avatarIcon: "fa-solid fa-water",
+                license: "Open Weights",
+                context: "128,000 tokens",
+                architecture: "671B Parameter MoE (37B Activated)",
+                description: "Milestone open-weight reasoning model developed purely through large-scale reinforcement learning without supervised warmups.",
+                specs: ["Open Weights", "MIT License", "671B MoE", "Native Chain-of-Thought"],
+                longDesc: "DeepSeek-R1 demonstrated that reasoning behavior can be self-taught via large-scale RL incentives. Offers fully transparent reasoning tokens and distilled open-source checkpoints (1.5B to 70B parameters).",
+                features: [
+                    "Permissive MIT open-weights license for commercial inference & distillation",
+                    "Competitive with top proprietary reasoning systems on math & code",
+                    "Sparse Mixture-of-Experts for cost-efficient local multi-GPU hosting",
+                    "Includes pre-distilled checkpoints based on Qwen and Llama"
+                ],
+                url: "https://github.com/deepseek-ai/DeepSeek-R1"
+            },
+            {
+                id: "gemini-2-flash",
+                name: "Gemini",
+                version: "2.0 Flash / Pro",
+                category: "llm",
+                creator: "Google DeepMind",
+                avatarIcon: "fa-brands fa-google",
+                license: "Freemium Web",
+                context: "1,000,000+ tokens",
+                architecture: "Native Multimodal MoE",
+                description: "High-speed multimodal powerhouse boasting 1M+ token context windows and multimodal audio/video live streaming capabilities.",
+                specs: ["1M+ Context", "Native Audio/Video Stream", "Sub-second TTFT", "Google Workspace"],
+                longDesc: "Gemini 2.0 provides ultra-fast first-token latency, native tool calling (Google Search, Python code interpreter), and continuous video/audio ingestion designed for autonomous assistant agents.",
+                features: [
+                    "Massive 1-million-token context window for full codebase and video analysis",
+                    "Multimodal Live API for bidirectional real-time video/audio streaming",
+                    "Deep grounding integration with Google Search and enterprise systems",
+                    "Extreme cost-efficiency on Google AI Studio & Vertex AI"
+                ],
+                url: "https://ai.google.dev"
+            },
+            {
+                id: "llama-3-3",
+                name: "Llama",
+                version: "3.3 70B Instruct",
+                category: "llm",
+                creator: "Meta AI",
+                avatarIcon: "fa-solid fa-network-wired",
+                license: "Open Weights",
+                context: "128,000 tokens",
+                architecture: "Dense Decoder-only Transformer",
+                description: "Meta's flagship open-weights model matching 405B capabilities at a fraction of the hardware footprint.",
+                specs: ["Open Weights", "128K Context", "Llama Community License", "Tool Calling"],
+                longDesc: "Llama 3.3 70B incorporates advanced knowledge distillation from the 405B flagship, delivering tier-one enterprise natural language understanding, translation, and code generation on standard dual-GPU workstations.",
+                features: [
+                    "Runs efficiently on consumer-grade quad-RTX 4090 or single H100 rigs",
+                    "State-of-the-art multilingual and translation benchmark results",
+                    "Fine-tuned for agentic workflow tool execution and structured generation",
+                    "Massive ecosystem support across Ollama, vLLM, and Hugging Face"
+                ],
+                url: "https://llama.meta.com"
+            },
+
+            // CODING & AGENTIC IDEs
+            {
+                id: "cursor-ide",
+                name: "Cursor",
+                version: "v0.45+",
+                category: "code",
+                creator: "Anysphere",
+                avatarIcon: "fa-solid fa-terminal",
+                license: "Freemium Web",
+                context: "Full Workspace Index",
+                architecture: "Forked VS Code with Native Multi-File AI Agent",
+                description: "The premier AI-native code editor featuring Composer multi-file creation, fast semantic indexing, and shadow workspaces.",
+                specs: ["Composer Agent", "Multi-Model", "Semantic Search", "Shadow Workspace"],
+                longDesc: "Cursor seamlessly integrates multi-file diffing, custom prompt rules (.cursorrules), and real-time project re-indexing to allow developers to build complex software stacks in plain English.",
+                features: [
+                    "Composer agent that generates, edits, and debugs code across 20+ files simultaneously",
+                    "Instant toggle between Claude 3.7 Sonnet, o3-mini, and custom API keys",
+                    "Shadow Workspace executing linter rules and tests in background isolation",
+                    "Predictive multi-token editing based on immediate cursor movement"
+                ],
+                url: "https://cursor.com"
+            },
+            {
+                id: "windsurf-editor",
+                name: "Windsurf",
+                version: "Cascade 1.2",
+                category: "code",
+                creator: "Codeium",
+                avatarIcon: "fa-solid fa-wind",
+                license: "Freemium Web",
+                context: "Deep Context Engine",
+                architecture: "Collaborative Agentic IDE",
+                description: "Next-generation IDE that synchronizes developer intent with an autonomous AI collaborator named Cascade.",
+                specs: ["Cascade Flow", "Terminal Awareness", "Auto-Diagnostics", "Real-Time Diff"],
+                longDesc: "Windsurf pioneered the concept of 'Flows' where the AI agent and human work side-by-side: Cascade inspects terminals, runs build commands, notices compilation errors, and resolves them without manual prompts.",
+                features: [
+                    "Deep terminal execution and shell environment understanding",
+                    "Continuous context awareness tracking code changes across branches",
+                    "Proactive syntax and build error auto-remediation",
+                    "Built upon Codeium's proprietary low-latency enterprise indexer"
+                ],
+                url: "https://codeium.com/windsurf"
+            },
+            {
+                id: "github-copilot",
+                name: "GitHub Copilot",
+                version: "Copilot Workspace / 2026",
+                category: "code",
+                creator: "GitHub / Microsoft",
+                avatarIcon: "fa-brands fa-github",
+                license: "Proprietary API",
+                context: "Repository Graph Context",
+                architecture: "Enterprise AI Developer Platform",
+                description: "The enterprise standard for code autocomplete, GitHub Issue-to-PR pipelines, and cross-repo intelligence.",
+                specs: ["GitHub Integration", "Multi-Model Toggle", "Copilot Edits", "Enterprise Security"],
+                longDesc: "Evolving from inline autocompletion into full software lifecycle automation, Copilot now plans entire pull requests, manages vulnerability patching, and supports multiple frontier models.",
+                features: [
+                    "Copilot Workspace for turning GitHub issues directly into tested pull requests",
+                    "Choice of underlying models including Claude 3.5/3.7, GPT-4o, and Gemini",
+                    "Enterprise data indemnity and vulnerability scanning integrations",
+                    "Seamless IDE extensions for VS Code, JetBrains, Visual Studio, and Neovim"
+                ],
+                url: "https://github.com/features/copilot"
+            },
+
+            // IMAGE GENERATION
+            {
+                id: "flux-1",
+                name: "FLUX.1",
+                version: "v1.1 [pro] / [dev]",
+                category: "image",
+                creator: "Black Forest Labs",
+                avatarIcon: "fa-solid fa-shapes",
+                license: "Open Weights",
+                context: "Up to 4K Native",
+                architecture: "12B Parameter Rectified Flow Transformer",
+                description: "The reigning visual standard in open-weights image synthesis, renowned for photorealism, typography, and anatomy.",
+                specs: ["Open Weights", "12B Parameters", "Perfect Typography", "Photoreal Hands"],
+                longDesc: "Engineered by the original creators of Stable Diffusion, FLUX.1 uses a hybrid diffusion-transformer (DiT) architecture that accurately adheres to complex multi-sentence prompts and text rendering.",
+                features: [
+                    "Flawless rendering of typography and signage within complex scenes",
+                    "Superior skin textures, lighting physics, and complex hand anatomies",
+                    "Open weights available in Dev and Schnell (4-step distillation) formats",
+                    "Ultra-fast API inference via Black Forest Labs and Fal.ai"
+                ],
+                url: "https://blackforestlabs.ai"
+            },
+            {
+                id: "midjourney",
+                name: "Midjourney",
+                version: "v6.1 / v7 Alpha",
+                category: "image",
+                creator: "Midjourney Inc.",
+                avatarIcon: "fa-solid fa-palette",
+                license: "Proprietary API",
+                context: "Web & Discord Interface",
+                architecture: "Proprietary Latent Diffusion",
+                description: "Unrivaled artistic cohesion, cinematic aesthetics, and intuitive visual storytelling platform.",
+                specs: ["Cinematic Lighting", "Web Editor", "Inpainting / Outpainting", "Style Tuner"],
+                longDesc: "Midjourney remains the visual benchmark for concept artists, cinematographers, and graphic designers, boasting powerful web canvas manipulation, texture coherence, and character consistency features.",
+                features: [
+                    "Industry-standard cinematic lighting, reflections, and textures",
+                    "Powerful Web UI with Pan, Zoom, Inpaint, and Variation matrices",
+                    "Style Reference (--sref) and Character Reference (--cref) consistency mechanisms",
+                    "High-resolution 2048x2048 upscalers without hallucinated artifacts"
+                ],
+                url: "https://www.midjourney.com"
+            },
+            {
+                id: "ideogram",
+                name: "Ideogram",
+                version: "v2.0",
+                category: "image",
+                creator: "Ideogram AI",
+                avatarIcon: "fa-solid fa-font",
+                license: "Freemium Web",
+                context: "Native Graphic Typography",
+                architecture: "Specialized Text-Image Diffusion",
+                description: "The gold standard for graphic design generation, branding, typography, posters, and logo creation.",
+                specs: ["Graphic Design", "Logo Maker", "Typography Leader", "Color Palette Control"],
+                longDesc: "Ideogram 2.0 solves the hardest challenges in AI design: rendering lengthy paragraphs, t-shirt vectors, corporate branding, and distinct color-palette guidelines on command.",
+                features: [
+                    "Unmatched precision for graphic design, logos, vector stickers, and poster art",
+                    "Strict multi-line spelling accuracy with arbitrary font styling",
+                    "Pre-set artistic palettes (Anime, Graphic, Realistic, 3D Render)",
+                    "Web editor with background removal and asset vectorization"
+                ],
+                url: "https://ideogram.ai"
+            },
+
+            // VIDEO & WORLD SIMULATORS
+            {
+                id: "runway-gen3",
+                name: "Runway Gen-3",
+                version: "Alpha Turbo",
+                category: "video",
+                creator: "Runway",
+                avatarIcon: "fa-solid fa-clapperboard",
+                license: "Freemium Web",
+                context: "High-Definition 10-sec Clips",
+                architecture: "Multimodal Video Generation DiT",
+                description: "Hollywood-grade video generation engine providing granular camera directors, motion brushes, and lip-sync.",
+                specs: ["Camera Control", "Motion Brush", "Lip Sync", "4K Upscaling"],
+                longDesc: "Runway Gen-3 Alpha provides fine-grained temporal fidelity, simulating complex physical interactions like water splashes, cloth simulations, and fast cinematic panning.",
+                features: [
+                    "Director Mode: precise speed, pan, tilt, zoom, and roll camera commands",
+                    "Motion Brush for targeting animation to selective static image pixels",
+                    "Gen-3 Alpha Turbo: 7x faster generation for real-time editorial workflows",
+                    "Integrated audio sound-effects generation timed to visual dynamics"
+                ],
+                url: "https://runwayml.com"
+            },
+            {
+                id: "kling-ai",
+                name: "Kling AI",
+                version: "v1.5 Pro",
+                category: "video",
+                creator: "Kuaishou",
+                avatarIcon: "fa-solid fa-film",
+                license: "Freemium Web",
+                context: "Up to 1080p 30fps",
+                architecture: "3D Spatiotemporal Joint Attention DiT",
+                description: "High-dynamic physical simulation engine capable of generating cinematic, coherent video sequences up to 2 minutes.",
+                specs: ["Physics Simulation", "1080p Full HD", "Extended Duration", "Motion Trajectory"],
+                longDesc: "Kling 1.5 achieved global acclaim for handling intense character motion, complex gymnastics, eating animations, and vehicle dynamics with realistic physics and minimal morphing.",
+                features: [
+                    "Simulation of genuine physical real-world dynamics and collision mechanics",
+                    "Motion Trajectory tool to paint custom paths for objects across 3D space",
+                    "Generate clips up to 2 full minutes with prompt extension chains",
+                    "Native 1080p cinematic exports at 30 frames per second"
+                ],
+                url: "https://klingai.com"
+            },
+            {
+                id: "openai-sora",
+                name: "Sora",
+                version: "v1.0 (Production)",
+                category: "video",
+                creator: "OpenAI",
+                avatarIcon: "fa-solid fa-eye",
+                license: "Proprietary API",
+                context: "1080p / Multiple Aspect Ratios",
+                architecture: "Spatiotemporal Video Diffusion Transformer",
+                description: "Groundbreaking world-simulator generating up to 60-second scenes with persistent 3D geometry and characters.",
+                specs: ["World Simulator", "Persistent 3D", "Multi-shot Sequences", "Storyboarding"],
+                longDesc: "Sora operates as a visual world simulator, treating video as collections of spacetime latent patches. Accurately maintains subject identity across multiple dramatic cuts and perspective shifts.",
+                features: [
+                    "Unsurpassed multi-shot temporal persistence and scene identity consistency",
+                    "Generates across 16:9 widescreen, 9:16 vertical, and cinematic ratios",
+                    "Understands physical affordances, lighting shadows, and environmental reflections",
+                    "Storyboarding workbench for visual directors and ad production"
+                ],
+                url: "https://openai.com/sora"
+            },
+
+            // AUDIO, VOICE & MUSIC
+            {
+                id: "elevenlabs",
+                name: "ElevenLabs",
+                version: "Voice Engine v3",
+                category: "audio",
+                creator: "ElevenLabs",
+                avatarIcon: "fa-solid fa-microphone-lines",
+                license: "Freemium Web",
+                context: "Ultra-low Latency API",
+                architecture: "Neural Speech Synthesizer & Audio DiT",
+                description: "The gold standard in voice cloning, conversational latency, multi-lingual dubbing, and expressive sound design.",
+                specs: ["Zero-shot Voice Clone", "32+ Languages", "Conversational AI Agent", "Sound FX"],
+                longDesc: "ElevenLabs powers realistic voice synthesis with nuanced emotional delivery, whispers, laughter, and gasps. Its Conversational AI SDK powers autonomous telephone and customer agents globally.",
+                features: [
+                    "Instant voice cloning from just a 1-minute audio recording sample",
+                    "Conversational AI platform with sub-400ms end-to-end voice latency",
+                    "Automatic video dubbing with speaker translation and lip synchronization",
+                    "Text-to-sound-effects generator for game developers and filmmakers"
+                ],
+                url: "https://elevenlabs.io"
+            },
+            {
+                id: "suno-ai",
+                name: "Suno",
+                version: "v4",
+                category: "audio",
+                creator: "Suno Inc.",
+                avatarIcon: "fa-solid fa-music",
+                license: "Freemium Web",
+                context: "Full 4-minute Songs",
+                architecture: "Unified Audio Transformer",
+                description: "Instant studio-quality music generator synthesizing rich vocals, live instruments, and radio-ready production.",
+                specs: ["Full 4-min Songs", "Stem Separation", "Studio Vocals", "Genre Fusion"],
+                longDesc: "Suno v4 elevates AI music generation to commercial release quality, enabling anyone to craft complete multi-verse tracks across pop, rock, jazz, classical, and electronic subgenres in seconds.",
+                features: [
+                    "Complete song structure: intro, verses, chorus, bridges, and guitar/synth solos",
+                    "Stem splitting: separate vocals, bass, drums, and instrumental tracks",
+                    "Studio-grade audio fidelity without muddy frequencies or spectral hiss",
+                    "Custom lyrics support with rhyme scheme and meter adherence"
+                ],
+                url: "https://suno.com"
+            },
+            {
+                id: "whisper",
+                name: "Whisper",
+                version: "large-v3-turbo",
+                category: "audio",
+                creator: "OpenAI",
+                avatarIcon: "fa-solid fa-ear-listen",
+                license: "Open Weights",
+                context: "Arbitrary Audio Streams",
+                architecture: "Weakly-Supervised Sequence-to-Sequence",
+                description: "Universal automatic speech recognition (ASR) standard offering fast transcription and translation across 99+ languages.",
+                specs: ["Open Weights", "MIT License", "99+ Languages", "Timestamps & VAD"],
+                longDesc: "Whisper large-v3-turbo reduces parameter overhead while accelerating transcription speeds by over 8x compared to the original v3, operating robustly under intense background noise and regional accents.",
+                features: [
+                    "Near-zero word error rate (WER) across diverse accents and noisy environments",
+                    "Word-level and sentence-level timestamp alignment for subtitling",
+                    "Open weights runnable on local CPUs, edge devices, and Apple Silicon chips",
+                    "Direct translation of non-English spoken languages into English text"
+                ],
+                url: "https://github.com/openai/whisper"
+            },
+
+            // RESEARCH & DEEP SEARCH
+            {
+                id: "perplexity",
+                name: "Perplexity AI",
+                version: "Sonar / Deep Research",
+                category: "research",
+                creator: "Perplexity",
+                avatarIcon: "fa-solid fa-magnifying-glass-chart",
+                license: "Freemium Web",
+                context: "Multi-Search Synthesis",
+                architecture: "Real-time Retrieval-Augmented Generator",
+                description: "Conversational search and deep research engine synthesizing live internet sources with inline academic citations.",
+                specs: ["Deep Research", "Inline Citations", "Source Verification", "Pro Reasoning"],
+                longDesc: "Perplexity's Deep Research feature autonomously browses hundreds of web pages, generates comprehensive multi-page investigative reports, checks opposing perspectives, and provides footnotes.",
+                features: [
+                    "Deep Research agent that autonomously executes iterative multi-query searches",
+                    "Strict citation attribution linking claims directly to verified URLs",
+                    "Collections & Spaces for organizing research documents and prompts",
+                    "Custom model selection (Sonar, Claude 3.7, o3-mini, Gemini Pro)"
+                ],
+                url: "https://www.perplexity.ai"
+            },
+            {
+                id: "notebooklm",
+                name: "NotebookLM",
+                version: "Gemini 2.0 Engine",
+                category: "research",
+                creator: "Google",
+                avatarIcon: "fa-solid fa-book-open",
+                license: "Freemium Web",
+                context: "Up to 50 Sources (25M words)",
+                architecture: "Grounded Document Synthesis",
+                description: "Personalized AI research assistant that operates exclusively on your uploaded PDFs, Google Docs, and YouTube links.",
+                specs: ["Strict Grounding", "Audio Overviews", "Zero Hallucination", "Study Guide Maker"],
+                longDesc: "NotebookLM grounds Gemini strictly within user-provided sources. Renowned for its viral 'Audio Overviews' which turn boring research papers into engaging, two-host conversational podcast discussions.",
+                features: [
+                    "Audio Overview: Generates realistic two-host conversational AI podcasts",
+                    "Strict grounding guarantees answers cite only user-uploaded documents",
+                    "Auto-generates study guides, FAQ sheets, timelines, and briefing docs",
+                    "Direct integration with Google Drive, YouTube URLs, PDFs, and Markdown notes"
+                ],
+                url: "https://notebooklm.google.com"
             }
         ];
 
-        let cartCount = 0;
+        // State Management
+        let activeCategory = "all";
+        let searchQuery = "";
+        let selectedLicense = "all";
+        let currentSort = "featured";
 
-        const categoriesGrid = document.getElementById('categoriesGrid');
-        const productsGrid = document.getElementById('productsGrid');
-        const testimonialsList = document.getElementById('testimonialsList');
-        const cartCountEl = document.getElementById('cartCount');
-        const searchInput = document.getElementById('searchInput');
-        const searchBtn = document.getElementById('searchBtn');
-        const mobileToggle = document.getElementById('mobileToggle');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const newsletterForm = document.getElementById('newsletterForm');
-        const newsletterEmail = document.getElementById('newsletterEmail');
-        const newsletterMsg = document.getElementById('newsletterMsg');
+        // DOM References
+        const toolsGrid = document.getElementById("toolsGrid");
+        const categoryPills = document.getElementById("categoryPills");
+        const searchInput = document.getElementById("searchInput");
+        const licenseFilter = document.getElementById("licenseFilter");
+        const sortBy = document.getElementById("sortBy");
+        const visibleCount = document.getElementById("visibleCount");
+        const totalToolsCount = document.getElementById("totalToolsCount");
 
-        function renderCategories() {
-            categoriesGrid.innerHTML = '';
-            CATEGORIES.forEach(cat => {
-                const el = document.createElement('div');
-                el.className = 'cat-card';
-                el.innerHTML = `
-                    <div class="icon-wrap"><i class="fas ${cat.icon}"></i></div>
-                    <h4>${cat.name}</h4>
-                    <div class="count">${cat.count} Wares</div>
-                `;
-                el.addEventListener('click', () => {
-                    searchInput.value = cat.name;
-                    filterProducts(cat.name);
-                    document.getElementById('products').scrollIntoView({ behavior: 'smooth', block: 'start' });
-                });
-                categoriesGrid.appendChild(el);
+        // Modal Elements
+        const modalOverlay = document.getElementById("modalOverlay");
+        const modalCloseBtn = document.getElementById("modalCloseBtn");
+        const modalDismissBtn = document.getElementById("modalDismissBtn");
+        const modalTitle = document.getElementById("modalTitle");
+        const modalCreator = document.getElementById("modalCreator");
+        const modalVersion = document.getElementById("modalVersion");
+        const modalContext = document.getElementById("modalContext");
+        const modalArch = document.getElementById("modalArch");
+        const modalLicense = document.getElementById("modalLicense");
+        const modalLongDesc = document.getElementById("modalLongDesc");
+        const modalFeatures = document.getElementById("modalFeatures");
+        const modalDocLink = document.getElementById("modalDocLink");
+        const modalIcon = document.getElementById("modalIcon");
+
+        // Initialize App
+        function initApp() {
+            totalToolsCount.textContent = AI_REGISTRY.length;
+            renderTools();
+            bindEvents();
+        }
+
+        // Filter and Sort Engine
+        function getFilteredTools() {
+            return AI_REGISTRY.filter(tool => {
+                // Category Filter
+                const matchesCat = activeCategory === "all" || tool.category === activeCategory;
+
+                // License Filter
+                const matchesLicense = selectedLicense === "all" || tool.license === selectedLicense;
+
+                // Search Query Filter
+                const q = searchQuery.toLowerCase().trim();
+                const matchesSearch = !q || 
+                    tool.name.toLowerCase().includes(q) ||
+                    tool.creator.toLowerCase().includes(q) ||
+                    tool.version.toLowerCase().includes(q) ||
+                    tool.description.toLowerCase().includes(q) ||
+                    tool.specs.some(s => s.toLowerCase().includes(q));
+
+                return matchesCat && matchesLicense && matchesSearch;
+            }).sort((a, b) => {
+                if (currentSort === "name") {
+                    return a.name.localeCompare(b.name);
+                } else if (currentSort === "version") {
+                    return b.version.localeCompare(a.version);
+                }
+                return 0; // Default featured order
             });
         }
 
-        function renderProducts(list) {
-            productsGrid.innerHTML = '';
-            if (!list.length) {
-                productsGrid.innerHTML = `
-                    <div style="grid-column:1/-1;text-align:center;padding:40px;background:#eedcb9;border:3px dashed var(--mud-dark);border-radius:12px;">
-                        <i class="fas fa-basket-shopping" style="font-size:32px;color:var(--clay-terracotta);margin-bottom:10px;display:block;"></i>
-                        No village wares found matching your search.
-                    </div>`;
+        // Render Card Elements
+        function renderTools() {
+            const filtered = getFilteredTools();
+            visibleCount.textContent = filtered.length;
+            toolsGrid.innerHTML = "";
+
+            if (filtered.length === 0) {
+                toolsGrid.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; background: var(--bg-surface); border: 1px dashed var(--border-subtle); border-radius: var(--radius-lg);">
+                        <i class="fas fa-satellite-dish" style="font-size: 36px; color: var(--text-muted); margin-bottom: 14px;"></i>
+                        <h3 style="font-size: 18px; margin-bottom: 6px;">No AI models found</h3>
+                        <p style="color: var(--text-secondary); font-size: 14px;">Try modifying your search keywords or switching category filters.</p>
+                    </div>
+                `;
                 return;
             }
 
-            list.forEach(p => {
-                const el = document.createElement('article');
-                el.className = 'product-card';
-                const badgeClass = p.badge === 'Sale' ? 'sale' : '';
-                const badgeHtml = p.badge ? `<span class="badge ${badgeClass}">${p.badge}</span>` : '';
-                const oldPriceHtml = p.oldPrice ? `<span class="old-price">₹${p.oldPrice}</span>` : '';
-                const stars = '★'.repeat(Math.round(p.rating)) + '☆'.repeat(5 - Math.round(p.rating));
+            filtered.forEach(tool => {
+                const card = document.createElement("div");
+                card.className = "tool-card";
 
-                el.innerHTML = `
-                    <div class="img-wrap">
-                        <img src="${p.img}" alt="${escapeHtml(p.title)}" loading="lazy">
-                        ${badgeHtml}
-                        <button class="wish-btn" aria-label="Save to favorites"><i class="far fa-heart"></i></button>
-                    </div>
-                    <div class="body">
-                        <div class="category-tag">${p.category}</div>
-                        <h5>${escapeHtml(p.title)}</h5>
-                        <div class="price-row">
-                            <span class="price">₹${p.price}</span>
-                            ${oldPriceHtml}
+                // License Dot Color
+                let dotClass = "dot-proprietary";
+                if (tool.license.includes("Open")) dotClass = "dot-open";
+                if (tool.license.includes("Freemium")) dotClass = "dot-freemium";
+
+                card.innerHTML = `
+                    <div>
+                        <div class="card-top">
+                            <div class="card-title-group">
+                                <div class="tool-avatar"><i class="${tool.avatarIcon}"></i></div>
+                                <div class="tool-meta">
+                                    <h3>${tool.name}</h3>
+                                    <div class="tool-creator">${tool.creator}</div>
+                                </div>
+                            </div>
+                            <span class="version-badge">${tool.version}</span>
                         </div>
-                        <div class="rating">
-                            ${stars} <span>(${p.reviews} reviews)</span>
+
+                        <p class="tool-desc">${tool.description}</p>
+
+                        <div class="spec-pills">
+                            ${tool.specs.map(spec => `<span class="spec-item">${spec}</span>`).join("")}
                         </div>
                     </div>
-                    <div class="footer">
-                        <button class="add-btn" data-id="${p.id}"><i class="fas fa-plus"></i> Put in Basket</button>
+
+                    <div class="card-footer">
+                        <div class="badge-type">
+                            <span class="type-dot ${dotClass}"></span>
+                            <span style="color: var(--text-secondary);">${tool.license}</span>
+                        </div>
+                        <button class="btn-inspect" onclick="openModal('${tool.id}')">
+                            <span>Inspect</span> <i class="fas fa-chevron-right" style="font-size: 11px;"></i>
+                        </button>
                     </div>
                 `;
-                productsGrid.appendChild(el);
-            });
-
-            // Wishlist interaction
-            productsGrid.querySelectorAll('.wish-btn').forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    this.classList.toggle('active');
-                    const icon = this.querySelector('i');
-                    if (this.classList.contains('active')) {
-                        icon.className = 'fas fa-heart';
-                    } else {
-                        icon.className = 'far fa-heart';
-                    }
-                });
-            });
-
-            // Add to Cart
-            productsGrid.querySelectorAll('.add-btn').forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    const id = Number(this.dataset.id);
-                    addToCart(id, this);
-                });
+                toolsGrid.appendChild(card);
             });
         }
 
-        function renderTestimonials() {
-            testimonialsList.innerHTML = '';
-            TESTIMONIALS.forEach(t => {
-                const stars = '★'.repeat(t.stars) + '☆'.repeat(5 - t.stars);
-                const el = document.createElement('div');
-                el.className = 'testimonial-card';
-                el.innerHTML = `
-                    <div class="stars">${stars}</div>
-                    <blockquote>“${escapeHtml(t.text)}”</blockquote>
-                    <div class="author">
-                        <img class="avatar" src="${t.avatar}" alt="${escapeHtml(t.name)}" loading="lazy">
-                        <div>
-                            <div class="name">${escapeHtml(t.name)}</div>
-                            <div class="role">${escapeHtml(t.role)}</div>
-                        </div>
-                    </div>
-                `;
-                testimonialsList.appendChild(el);
+        // Open Modal Dialog
+        window.openModal = function(toolId) {
+            const tool = AI_REGISTRY.find(t => t.id === toolId);
+            if (!tool) return;
+
+            modalTitle.textContent = tool.name;
+            modalCreator.textContent = tool.creator;
+            modalVersion.textContent = tool.version;
+            modalContext.textContent = tool.context;
+            modalArch.textContent = tool.architecture;
+            modalLicense.textContent = tool.license;
+            modalLongDesc.textContent = tool.longDesc;
+            modalDocLink.href = tool.url;
+            modalIcon.innerHTML = `<i class="${tool.avatarIcon}"></i>`;
+
+            modalFeatures.innerHTML = tool.features
+                .map(feat => `<li><i class="fas fa-check-circle"></i><span>${feat}</span></li>`)
+                .join("");
+
+            modalOverlay.classList.add("active");
+            document.body.style.overflow = "hidden";
+        };
+
+        // Close Modal
+        function closeModal() {
+            modalOverlay.classList.remove("active");
+            document.body.style.overflow = "auto";
+        }
+
+        // Event Bindings
+        function bindEvents() {
+            // Category Buttons
+            categoryPills.addEventListener("click", (e) => {
+                const btn = e.target.closest(".pill-btn");
+                if (!btn) return;
+                categoryPills.querySelectorAll(".pill-btn").forEach(b => b.classList.remove("active"));
+                btn.classList.add("active");
+                activeCategory = btn.dataset.cat;
+                renderTools();
+            });
+
+            // Search Input
+            searchInput.addEventListener("input", (e) => {
+                searchQuery = e.target.value;
+                renderTools();
+            });
+
+            // License Select
+            licenseFilter.addEventListener("change", (e) => {
+                selectedLicense = e.target.value;
+                renderTools();
+            });
+
+            // Sorting Select
+            sortBy.addEventListener("change", (e) => {
+                currentSort = e.target.value;
+                renderTools();
+            });
+
+            // Modal Interactions
+            modalCloseBtn.addEventListener("click", closeModal);
+            modalDismissBtn.addEventListener("click", closeModal);
+            modalOverlay.addEventListener("click", (e) => {
+                if (e.target === modalOverlay) closeModal();
+            });
+
+            // Keyboard Escape Key for Modal
+            window.addEventListener("keydown", (e) => {
+                if (e.key === "Escape" && modalOverlay.classList.contains("active")) {
+                    closeModal();
+                }
             });
         }
 
-        function escapeHtml(text) {
-            return String(text).replace(/[&<>"']/g, s => ({
-                '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
-            }[s]));
-        }
-
-        function updateCartCount() {
-            cartCountEl.textContent = cartCount;
-            cartCountEl.style.transform = 'scale(1.4)';
-            setTimeout(() => cartCountEl.style.transform = '', 200);
-        }
-
-        function addToCart(productId, btnEl) {
-            const p = PRODUCTS.find(x => x.id === productId);
-            if (!p) return;
-            cartCount++;
-            updateCartCount();
-
-            if (btnEl) {
-                const orig = btnEl.innerHTML;
-                btnEl.innerHTML = '<i class="fas fa-check"></i> In Jute Basket!';
-                btnEl.classList.add('added');
-                setTimeout(() => {
-                    btnEl.innerHTML = orig;
-                    btnEl.classList.remove('added');
-                }, 1400);
-            }
-        }
-
-        function filterProducts(query) {
-            const q = String(query || '').trim().toLowerCase();
-            if (!q) {
-                renderProducts(PRODUCTS);
-                return;
-            }
-            const filtered = PRODUCTS.filter(p =>
-                p.title.toLowerCase().includes(q) ||
-                p.category.toLowerCase().includes(q)
-            );
-            renderProducts(filtered);
-        }
-
-        (function setupDealTimer() {
-            const now = new Date();
-            const target = new Date(now.getTime() + (36 * 60 + 40) * 60 * 1000);
-
-            function tick() {
-                const diff = target - new Date();
-                if (diff <= 0) return;
-                const days = Math.floor(diff / (24 * 3600 * 1000));
-                const hours = Math.floor((diff % (24 * 3600 * 1000)) / (3600 * 1000));
-                const mins = Math.floor((diff % (3600 * 1000)) / (60 * 1000));
-                const secs = Math.floor((diff % (60 * 1000)) / 1000);
-                document.getElementById('dealDays').textContent = String(days).padStart(2, '0');
-                document.getElementById('dealHours').textContent = String(hours).padStart(2, '0');
-                document.getElementById('dealMinutes').textContent = String(mins).padStart(2, '0');
-                document.getElementById('dealSeconds').textContent = String(secs).padStart(2, '0');
-            }
-            tick();
-            setInterval(tick, 1000);
-        })();
-
-        searchBtn.addEventListener('click', () => filterProducts(searchInput.value));
-        searchInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') filterProducts(e.target.value);
-        });
-
-        mobileToggle.addEventListener('click', () => {
-            const isOpen = mobileMenu.style.display === 'block';
-            mobileMenu.style.display = isOpen ? 'none' : 'block';
-            mobileToggle.innerHTML = isOpen ? '<i class="fas fa-bars"></i>' : '<i class="fas fa-times"></i>';
-        });
-
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.style.display = 'none';
-                mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
-            });
-        });
-
-        document.getElementById('shopNow').addEventListener('click', () => {
-            document.getElementById('products').scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
-        document.getElementById('exploreDeals').addEventListener('click', () => {
-            document.getElementById('deals').scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
-
-        document.getElementById('buyDeal').addEventListener('click', function() {
-            cartCount++;
-            updateCartCount();
-            const orig = this.innerHTML;
-            this.innerHTML = '<i class="fas fa-check"></i> Added to Basket!';
-            this.style.background = 'var(--leaf-green)';
-            this.style.color = '#fff';
-            setTimeout(() => {
-                this.innerHTML = orig;
-                this.style.background = '';
-                this.style.color = '';
-            }, 1600);
-        });
-
-        newsletterForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = newsletterEmail.value.trim();
-            if (!email || !email.includes('@')) {
-                newsletterMsg.textContent = 'Please enter a valid postal email.';
-                newsletterMsg.style.color = '#ff9980';
-                return;
-            }
-            newsletterMsg.textContent = '🌾 Ram Ram! You are now subscribed to our village dispatch.';
-            newsletterMsg.style.color = '#f7d279';
-            newsletterEmail.value = '';
-            setTimeout(() => newsletterMsg.textContent = '', 3800);
-        });
-
-        document.getElementById('cartBtn').addEventListener('click', () => {
-            alert(`🧺 Your Jute Basket holds ${cartCount} artisan item${cartCount !== 1 ? 's' : ''}.`);
-        });
-
-        document.getElementById('year').textContent = new Date().getFullYear();
-
-        renderCategories();
-        renderProducts(PRODUCTS);
-        renderTestimonials();
-        updateCartCount();
-
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 768) {
-                mobileMenu.style.display = 'none';
-                mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
-            }
-        });
+        // Run On Page Ready
+        document.addEventListener("DOMContentLoaded", initApp);
     </script>
-
 </body>
 </html>
